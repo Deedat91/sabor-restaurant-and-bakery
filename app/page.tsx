@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { MapPin, Phone, Mail, Instagram, Facebook, ChevronDown, Menu as MenuIcon, X, Clock, UtensilsCrossed, Sparkles } from 'lucide-react';
+import PotIcon from '@/PotIcon';
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
@@ -61,8 +62,9 @@ export default function Home() {
               className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent cursor-pointer"
               onClick={() => scrollToSection('home')}
             >
-              Sabor
+              <PotIcon />
             </div>
+
             
             {/* Desktop Menu */}
             <div className="hidden md:flex space-x-8 items-center">
@@ -152,23 +154,32 @@ export default function Home() {
             }}
           >
             <Sparkles className="w-16 h-16 mx-auto mb-6 text-amber-400 animate-pulse" />
-            <h1 className="text-6xl md:text-8xl font-black mb-6 bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent leading-tight">
-              Sabor Restaurant
-              <br />
-              <span className="text-5xl md:text-7xl">& Bakery</span>
-            </h1>
+            <h1 className="
+    font-black mb-6 leading-tight text-balance
+    bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent
+  ">
+              {/* Line 1 */}
+  <span className="block text-[clamp(2.25rem,8vw,5rem)] tracking-tight">
+    Sabor <span className="whitespace-nowrap">Restaurant</span>
+  </span>
+
+  {/* Line 2 */}
+  <span className="block text-[clamp(1.75rem,7vw,4rem)] tracking-tight">
+    &amp; Bakery
+  </span>
+</h1>
             <p className="text-xl md:text-3xl text-white/90 mb-8 font-light">
               Authentic Dominican & Colombian Cuisine
             </p>
             <p className="text-lg md:text-xl text-amber-400/80 mb-12">
               Where tradition meets flavor in every bite
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <div className="flex flex-col sm:flex-row gap-5 justify-center">
               <button 
                 onClick={() => scrollToSection('menu')}
                 className="group bg-gradient-to-r from-amber-500 to-orange-600 text-white px-10 py-5 rounded-full text-xl font-semibold hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-amber-500/50"
               >
-                <span className="flex items-center justify-center gap-2">
+                <span className="flex items-center justify-center gap-6">
                   Explore Menu
                   <UtensilsCrossed className="group-hover:rotate-12 transition-transform" />
                 </span>
@@ -184,7 +195,7 @@ export default function Home() {
           
           <button 
             onClick={() => scrollToSection('about')}
-            className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce"
+            className="absolute bottom-12 left-1/2 -translate-x-1/2 flex justify-center items-center animate-bounce z-50"
           >
             <ChevronDown className="w-12 h-12 text-white/60" />
           </button>
@@ -201,7 +212,7 @@ export default function Home() {
               className="space-y-6"
               style={{
                 opacity: Math.min(1, (scrollY - 400) / 300),
-                transform: `translateX(${Math.max(-50, -50 + (scrollY - 400) / 10)}px)`,
+                transform: `translateX(${Math.min(0, Math.max(-50, -50 + (scrollY - 400) / 10))}px)`,
               }}
             >
               <div className="inline-block">
@@ -245,8 +256,9 @@ export default function Home() {
             <div 
               className="relative h-[600px] rounded-3xl overflow-hidden"
               style={{
+                transition: 'transform 0.3s ease-out, opacity 0.3s ease-out',
                 opacity: Math.min(1, (scrollY - 400) / 300),
-                transform: `translateX(${Math.min(50, 50 - (scrollY - 400) / 10)}px)`,
+                transform: `translateX(${Math.max(0, Math.min(50, 50 - (scrollY - 400) / 10))}px)`,
               }}
             >
               <div 
