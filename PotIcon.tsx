@@ -2,54 +2,86 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+import { useRouter, usePathname } from 'next/navigation';
 
 export default function PotIcon() {
   const [isOpen, setIsOpen] = useState(false);
-  const lastStateRef = useRef(false); // for hysteresis & avoiding extra re-renders
+  const lastStateRef = useRef(false);
+  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
-    const home = document.getElementById('home');
-    if (!home) return;
+    // Check if we're on the homepage
+    const isHomePage = pathname === '/';
+    
+    if (isHomePage) {
+      // Original homepage behavior - watch for #home section
+      const home = document.getElementById('home');
+      if (!home) return;
 
-    // Hysteresis: open when >= 55% in view, close when <= 35% in view
-    const OPEN_THRESHOLD = 0.55;
-    const CLOSE_THRESHOLD = 0.35;
+      const OPEN_THRESHOLD = 0.55;
+      const CLOSE_THRESHOLD = 0.35;
 
-    const io = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        const ratio = entry.intersectionRatio;
+      const io = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0];
+          const ratio = entry.intersectionRatio;
 
-        if (!lastStateRef.current && ratio >= OPEN_THRESHOLD) {
+          if (!lastStateRef.current && ratio >= OPEN_THRESHOLD) {
+            lastStateRef.current = true;
+            setIsOpen(true);
+          } else if (lastStateRef.current && ratio <= CLOSE_THRESHOLD) {
+            lastStateRef.current = false;
+            setIsOpen(false);
+          }
+        },
+        {
+          threshold: Array.from({ length: 21 }, (_, i) => i / 20),
+        }
+      );
+
+      io.observe(home);
+      return () => io.disconnect();
+    } else {
+      // Other pages behavior - watch scroll position
+      const handleScroll = () => {
+        const scrollY = window.scrollY;
+        
+        if (!lastStateRef.current && scrollY >= 200) {
           lastStateRef.current = true;
           setIsOpen(true);
-        } else if (lastStateRef.current && ratio <= CLOSE_THRESHOLD) {
+        } else if (lastStateRef.current && scrollY <= 100) {
           lastStateRef.current = false;
           setIsOpen(false);
         }
-      },
-      {
-        // multiple thresholds for smoother ratio reporting
-        threshold: Array.from({ length: 21 }, (_, i) => i / 20), // 0.0 → 1.0
-      }
-    );
+      };
 
-    io.observe(home);
-    return () => io.disconnect();
-  }, []);
+      window.addEventListener('scroll', handleScroll);
+      handleScroll(); // Check initial position
+      
+      return () => window.removeEventListener('scroll', handleScroll);
+    }
+  }, [pathname]);
 
   const handleClick = () => {
-    const home = document.getElementById('home');
-    if (home) home.scrollIntoView({ behavior: 'smooth' });
+    const isHomePage = pathname === '/';
+    
+    if (isHomePage) {
+      // On homepage, scroll to #home section
+      const home = document.getElementById('home');
+      if (home) home.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // On other pages, navigate to homepage
+      router.push('/');
+    }
   };
 
   return (
     <button
       onClick={handleClick}
-      className="fixed top-4 left-4 z-50 p-2"
-      aria-label="Scroll to home"
+      className="fixed top-4 left-4 z-50 p-2 hover:scale-110 transition-transform"
+      aria-label="Go to home"
     >
-      {/* Stacked images that crossfade; no src swapping */}
       <div className="relative w-16 h-16 md:w-20 md:h-20">
         {/* Closed (base) */}
         <Image
@@ -76,4 +108,3 @@ export default function PotIcon() {
     </button>
   );
 }
-
