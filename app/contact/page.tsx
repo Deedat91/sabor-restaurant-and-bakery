@@ -21,25 +21,29 @@ export default function Contact() {
       name: 'College Point',
       address: '15-20 College Point Blvd',
       city: 'College Point, NY 11356',
-      mapEmbed: 'https://maps.google.com/maps?q=15-20+College+Point+Blvd+College+Point+NY+11356&t=&z=15&ie=UTF8&iwloc=&output=embed',
+      mapEmbed: 'https://www.openstreetmap.org/export/embed.html?bbox=-73.850%2C40.782%2C-73.826%2C40.796&layer=mapnik&marker=40.7885%2C-73.8378',
+      mapsLink: 'https://maps.google.com/?q=15-20+College+Point+Blvd+College+Point+NY+11356',
     },
     {
       name: 'Queens Public Library',
       address: '89-11 Merrick Blvd',
       city: 'Jamaica, NY 11432',
-      mapEmbed: 'https://maps.google.com/maps?q=89-11+Merrick+Blvd+Jamaica+NY+11432&t=&z=15&ie=UTF8&iwloc=&output=embed',
+      mapEmbed: 'https://www.openstreetmap.org/export/embed.html?bbox=-73.808%2C40.694%2C-73.784%2C40.708&layer=mapnik&marker=40.7002%2C-73.7958',
+      mapsLink: 'https://maps.google.com/?q=89-11+Merrick+Blvd+Jamaica+NY+11432',
     },
     {
       name: 'JFK Airport',
       address: 'Address Coming Soon',
       city: 'Queens, NY',
       mapEmbed: null,
+      mapsLink: null,
     },
     {
       name: 'Brooklyn',
       address: 'Address Coming Soon',
       city: 'Brooklyn, NY',
       mapEmbed: null,
+      mapsLink: null,
     },
   ];
 
@@ -163,10 +167,11 @@ export default function Contact() {
                 <h3 className="text-3xl font-bold mb-3 text-amber-400">{locations[selectedLocation].name}</h3>
                 <p className="text-gray-300 text-xl mb-2">{locations[selectedLocation].address}</p>
                 <p className="text-gray-300 text-xl">{locations[selectedLocation].city}</p>
-                {locations[selectedLocation].mapEmbed && (
-                  <a 
-                    href={`https://maps.google.com/?q=${locations[selectedLocation].address} ${locations[selectedLocation].city}`}
+                {locations[selectedLocation].mapsLink && (
+                  <a
+                    href={locations[selectedLocation].mapsLink}
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-block mt-4 text-amber-400 hover:text-amber-300 transition"
                   >
                     Get Directions →
@@ -209,28 +214,24 @@ export default function Contact() {
             {/* Map */}
             <div className="w-full rounded-3xl overflow-hidden border border-zinc-800">
               {locations[selectedLocation].mapEmbed ? (
-                <div className="flex flex-col">
-                  {/* Responsive iframe — aspect-video keeps it correctly proportioned */}
-                  <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-                    <iframe
-                      key={selectedLocation}
-                      src={locations[selectedLocation].mapEmbed}
-                      className="absolute inset-0 w-full h-full"
-                      style={{ border: 0 }}
-                      allowFullScreen
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                      title={`Map for ${locations[selectedLocation].name}`}
-                    />
-                  </div>
-                  {/* Address bar below the map */}
+                <>
+                  <iframe
+                    key={selectedLocation}
+                    src={locations[selectedLocation].mapEmbed}
+                    width="100%"
+                    height="380"
+                    style={{ border: 0, display: 'block' }}
+                    allowFullScreen
+                    loading="lazy"
+                    title={`Map for ${locations[selectedLocation].name}`}
+                  />
                   <div className="bg-zinc-900 px-6 py-4 flex items-center justify-between gap-4 flex-wrap">
                     <div>
                       <p className="font-bold text-white">{locations[selectedLocation].name}</p>
                       <p className="text-gray-400 text-sm">{locations[selectedLocation].address}, {locations[selectedLocation].city}</p>
                     </div>
                     <a
-                      href={`https://maps.google.com/?q=${encodeURIComponent(locations[selectedLocation].address + ' ' + locations[selectedLocation].city)}`}
+                      href={locations[selectedLocation].mapsLink!}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:scale-105 transition-all shrink-0"
@@ -238,7 +239,7 @@ export default function Contact() {
                       <MapPin size={16} /> Get Directions
                     </a>
                   </div>
-                </div>
+                </>
               ) : (
                 <div className="flex items-center justify-center bg-zinc-900 min-h-[300px]">
                   <div className="text-center p-8">
