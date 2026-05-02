@@ -206,50 +206,51 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Location Map Card */}
-            <div className="w-full rounded-3xl overflow-hidden border border-zinc-800 bg-gradient-to-br from-zinc-900 to-black flex flex-col items-center justify-center p-12 min-h-[400px] md:min-h-[500px]">
+            {/* Map */}
+            <div className="w-full rounded-3xl overflow-hidden border border-zinc-800">
               {locations[selectedLocation].mapEmbed ? (
-                <div className="text-center w-full">
-                  {/* Decorative map pin graphic */}
-                  <div className="relative mx-auto w-28 h-28 mb-8">
-                    <div className="absolute inset-0 bg-amber-500/20 rounded-full animate-ping opacity-40" />
-                    <div className="relative w-28 h-28 bg-gradient-to-br from-amber-500/20 to-orange-500/20 rounded-full flex items-center justify-center border border-amber-500/30">
-                      <MapPin size={52} className="text-amber-400" />
-                    </div>
+                <div className="flex flex-col">
+                  {/* Responsive iframe — aspect-video keeps it correctly proportioned */}
+                  <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                    <iframe
+                      key={selectedLocation}
+                      src={locations[selectedLocation].mapEmbed}
+                      className="absolute inset-0 w-full h-full"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title={`Map for ${locations[selectedLocation].name}`}
+                    />
                   </div>
-
-                  <h3 className="text-3xl font-black text-white mb-2">
-                    {locations[selectedLocation].name}
-                  </h3>
-                  <p className="text-xl text-gray-300 mb-1">{locations[selectedLocation].address}</p>
-                  <p className="text-xl text-amber-400 font-semibold mb-8">{locations[selectedLocation].city}</p>
-
-                  <a
-                    href={`https://maps.google.com/?q=${encodeURIComponent(locations[selectedLocation].address + ' ' + locations[selectedLocation].city)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-10 py-5 rounded-full text-lg font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50"
-                  >
-                    <MapPin size={22} />
-                    Open in Google Maps
-                  </a>
-                  <p className="text-gray-600 text-sm mt-6">Opens in Google Maps or your Maps app</p>
+                  {/* Address bar below the map */}
+                  <div className="bg-zinc-900 px-6 py-4 flex items-center justify-between gap-4 flex-wrap">
+                    <div>
+                      <p className="font-bold text-white">{locations[selectedLocation].name}</p>
+                      <p className="text-gray-400 text-sm">{locations[selectedLocation].address}, {locations[selectedLocation].city}</p>
+                    </div>
+                    <a
+                      href={`https://maps.google.com/?q=${encodeURIComponent(locations[selectedLocation].address + ' ' + locations[selectedLocation].city)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:scale-105 transition-all shrink-0"
+                    >
+                      <MapPin size={16} /> Get Directions
+                    </a>
+                  </div>
                 </div>
               ) : (
-                <div className="text-center">
-                  <div className="w-28 h-28 bg-zinc-800 rounded-full flex items-center justify-center mx-auto mb-8 border border-zinc-700">
-                    <MapPin size={52} className="text-amber-400/50" />
+                <div className="flex items-center justify-center bg-zinc-900 min-h-[300px]">
+                  <div className="text-center p-8">
+                    <div className="w-20 h-20 bg-zinc-800 rounded-full flex items-center justify-center mx-auto mb-6 border border-zinc-700">
+                      <MapPin size={40} className="text-amber-400/50" />
+                    </div>
+                    <h3 className="text-2xl font-bold mb-3 text-amber-400">Coming Soon!</h3>
+                    <p className="text-gray-300 mb-6">Our {locations[selectedLocation].name} location is opening soon.</p>
+                    <a href="tel:3473684407" className="inline-block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition-all">
+                      Call for Updates
+                    </a>
                   </div>
-                  <h3 className="text-3xl font-bold mb-4 text-amber-400">Coming Soon!</h3>
-                  <p className="text-xl text-gray-300 mb-8">
-                    Our {locations[selectedLocation].name} location is opening soon.
-                  </p>
-                  <a
-                    href="tel:3473684407"
-                    className="inline-block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition-all"
-                  >
-                    Call for Updates
-                  </a>
                 </div>
               )}
             </div>
