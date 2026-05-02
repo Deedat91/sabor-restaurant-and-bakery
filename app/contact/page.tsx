@@ -151,7 +151,7 @@ export default function Contact() {
       {/* Contact Info & Map */}
       <section className="py-20 bg-gradient-to-b from-zinc-900 to-black">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
             <div className="space-y-8">
               <div 
                 className="bg-gradient-to-br from-zinc-900 to-black p-8 rounded-3xl border border-zinc-800 hover:border-amber-500/50 transition-all"
