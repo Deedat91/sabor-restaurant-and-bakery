@@ -21,13 +21,13 @@ export default function Contact() {
       name: 'College Point',
       address: '15-20 College Point Blvd',
       city: 'College Point, NY 11356',
-      mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3019.8659654285487!2d-73.84728!3d40.78556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ3JzA4LjIiTiA3M8KwNTAnNDguMSJX!5e0!3m2!1sen!2sus!4v1234567890',
+      mapEmbed: 'https://maps.google.com/maps?q=15-20+College+Point+Blvd+College+Point+NY+11356&t=&z=15&ie=UTF8&iwloc=&output=embed',
     },
     {
       name: 'Queens Public Library',
       address: '89-11 Merrick Blvd',
       city: 'Jamaica, NY 11432',
-      mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3026.5!2d-73.7945!3d40.7023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQyJzA4LjMiTiA3M8KwNDcnNDAuMiJX!5e0!3m2!1sen!2sus!4v1234567890',
+      mapEmbed: 'https://maps.google.com/maps?q=89-11+Merrick+Blvd+Jamaica+NY+11432&t=&z=15&ie=UTF8&iwloc=&output=embed',
     },
     {
       name: 'JFK Airport',
@@ -206,33 +206,50 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Google Maps */}
-            <div className="h-[600px] md:h-[800px] w-full rounded-3xl overflow-hidden border border-zinc-800">
+            {/* Location Map Card */}
+            <div className="w-full rounded-3xl overflow-hidden border border-zinc-800 bg-gradient-to-br from-zinc-900 to-black flex flex-col items-center justify-center p-12 min-h-[400px] md:min-h-[500px]">
               {locations[selectedLocation].mapEmbed ? (
-                <iframe 
-                  src={locations[selectedLocation].mapEmbed}
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              ) : (
-                <div className="h-full flex items-center justify-center bg-zinc-900">
-                  <div className="text-center p-8">
-                    <MapPin size={64} className="text-amber-400 mx-auto mb-6" />
-                    <h3 className="text-3xl font-bold mb-4 text-amber-400">Coming Soon!</h3>
-                    <p className="text-xl text-gray-300 mb-6">
-                      Our {locations[selectedLocation].name} location is opening soon.
-                    </p>
-                    <a 
-                      href="tel:3473684407"
-                      className="inline-block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition-all"
-                    >
-                      Call for Updates
-                    </a>
+                <div className="text-center w-full">
+                  {/* Decorative map pin graphic */}
+                  <div className="relative mx-auto w-28 h-28 mb-8">
+                    <div className="absolute inset-0 bg-amber-500/20 rounded-full animate-ping opacity-40" />
+                    <div className="relative w-28 h-28 bg-gradient-to-br from-amber-500/20 to-orange-500/20 rounded-full flex items-center justify-center border border-amber-500/30">
+                      <MapPin size={52} className="text-amber-400" />
+                    </div>
                   </div>
+
+                  <h3 className="text-3xl font-black text-white mb-2">
+                    {locations[selectedLocation].name}
+                  </h3>
+                  <p className="text-xl text-gray-300 mb-1">{locations[selectedLocation].address}</p>
+                  <p className="text-xl text-amber-400 font-semibold mb-8">{locations[selectedLocation].city}</p>
+
+                  <a
+                    href={`https://maps.google.com/?q=${encodeURIComponent(locations[selectedLocation].address + ' ' + locations[selectedLocation].city)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-10 py-5 rounded-full text-lg font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50"
+                  >
+                    <MapPin size={22} />
+                    Open in Google Maps
+                  </a>
+                  <p className="text-gray-600 text-sm mt-6">Opens in Google Maps or your Maps app</p>
+                </div>
+              ) : (
+                <div className="text-center">
+                  <div className="w-28 h-28 bg-zinc-800 rounded-full flex items-center justify-center mx-auto mb-8 border border-zinc-700">
+                    <MapPin size={52} className="text-amber-400/50" />
+                  </div>
+                  <h3 className="text-3xl font-bold mb-4 text-amber-400">Coming Soon!</h3>
+                  <p className="text-xl text-gray-300 mb-8">
+                    Our {locations[selectedLocation].name} location is opening soon.
+                  </p>
+                  <a
+                    href="tel:3473684407"
+                    className="inline-block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition-all"
+                  >
+                    Call for Updates
+                  </a>
                 </div>
               )}
             </div>
@@ -332,7 +349,7 @@ export default function Contact() {
           </div>
           <div className="border-t border-zinc-900 pt-8 text-center text-gray-500">
             <p>© 2025 Sabor Restaurant & Bakery. All rights reserved.</p>
-            <p className="mt-2 text-sm">Built with ❤️ by Kazi & Deedat</p>
+            <p className="mt-2 text-sm">Developed by Deka Solutions</p>
           </div>
         </div>
       </footer>
