@@ -21,25 +21,29 @@ export default function Contact() {
       name: 'College Point',
       address: '15-20 College Point Blvd',
       city: 'College Point, NY 11356',
-      mapEmbed: 'https://maps.google.com/maps?q=15-20+College+Point+Blvd+College+Point+NY+11356&t=&z=15&ie=UTF8&iwloc=&output=embed',
+      mapEmbed: 'https://www.openstreetmap.org/export/embed.html?bbox=-73.850%2C40.782%2C-73.826%2C40.796&layer=mapnik&marker=40.7885%2C-73.8378',
+      mapsLink: 'https://maps.google.com/?q=15-20+College+Point+Blvd+College+Point+NY+11356',
     },
     {
       name: 'Queens Public Library',
       address: '89-11 Merrick Blvd',
       city: 'Jamaica, NY 11432',
-      mapEmbed: 'https://maps.google.com/maps?q=89-11+Merrick+Blvd+Jamaica+NY+11432&t=&z=15&ie=UTF8&iwloc=&output=embed',
+      mapEmbed: 'https://www.openstreetmap.org/export/embed.html?bbox=-73.808%2C40.694%2C-73.784%2C40.708&layer=mapnik&marker=40.7002%2C-73.7958',
+      mapsLink: 'https://maps.google.com/?q=89-11+Merrick+Blvd+Jamaica+NY+11432',
     },
     {
       name: 'JFK Airport',
       address: 'Address Coming Soon',
       city: 'Queens, NY',
       mapEmbed: null,
+      mapsLink: null,
     },
     {
       name: 'Brooklyn',
       address: 'Address Coming Soon',
       city: 'Brooklyn, NY',
       mapEmbed: null,
+      mapsLink: null,
     },
   ];
 
@@ -151,7 +155,7 @@ export default function Contact() {
       {/* Contact Info & Map */}
       <section className="py-20 bg-gradient-to-b from-zinc-900 to-black">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-2 gap-12 items-stretch">
             <div className="space-y-8">
               <div 
                 className="bg-gradient-to-br from-zinc-900 to-black p-8 rounded-3xl border border-zinc-800 hover:border-amber-500/50 transition-all"
@@ -163,10 +167,11 @@ export default function Contact() {
                 <h3 className="text-3xl font-bold mb-3 text-amber-400">{locations[selectedLocation].name}</h3>
                 <p className="text-gray-300 text-xl mb-2">{locations[selectedLocation].address}</p>
                 <p className="text-gray-300 text-xl">{locations[selectedLocation].city}</p>
-                {locations[selectedLocation].mapEmbed && (
-                  <a 
-                    href={`https://maps.google.com/?q=${locations[selectedLocation].address} ${locations[selectedLocation].city}`}
+                {locations[selectedLocation].mapsLink && (
+                  <a
+                    href={locations[selectedLocation].mapsLink}
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-block mt-4 text-amber-400 hover:text-amber-300 transition"
                   >
                     Get Directions →
@@ -206,50 +211,47 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Location Map Card */}
-            <div className="w-full rounded-3xl overflow-hidden border border-zinc-800 bg-gradient-to-br from-zinc-900 to-black flex flex-col items-center justify-center p-12 min-h-[400px] md:min-h-[500px]">
+            {/* Map */}
+            <div className="w-full rounded-3xl overflow-hidden border border-zinc-800 flex flex-col">
               {locations[selectedLocation].mapEmbed ? (
-                <div className="text-center w-full">
-                  {/* Decorative map pin graphic */}
-                  <div className="relative mx-auto w-28 h-28 mb-8">
-                    <div className="absolute inset-0 bg-amber-500/20 rounded-full animate-ping opacity-40" />
-                    <div className="relative w-28 h-28 bg-gradient-to-br from-amber-500/20 to-orange-500/20 rounded-full flex items-center justify-center border border-amber-500/30">
-                      <MapPin size={52} className="text-amber-400" />
+                <>
+                  <iframe
+                    key={selectedLocation}
+                    src={locations[selectedLocation].mapEmbed}
+                    width="100%"
+                    className="flex-1 min-h-[260px]"
+                    style={{ border: 0, display: 'block' }}
+                    allowFullScreen
+                    loading="lazy"
+                    title={`Map for ${locations[selectedLocation].name}`}
+                  />
+                  <div className="bg-zinc-900 px-6 py-4 flex items-center justify-between gap-4 flex-wrap">
+                    <div>
+                      <p className="font-bold text-white">{locations[selectedLocation].name}</p>
+                      <p className="text-gray-400 text-sm">{locations[selectedLocation].address}, {locations[selectedLocation].city}</p>
                     </div>
+                    <a
+                      href={locations[selectedLocation].mapsLink!}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:scale-105 transition-all shrink-0"
+                    >
+                      <MapPin size={16} /> Get Directions
+                    </a>
                   </div>
-
-                  <h3 className="text-3xl font-black text-white mb-2">
-                    {locations[selectedLocation].name}
-                  </h3>
-                  <p className="text-xl text-gray-300 mb-1">{locations[selectedLocation].address}</p>
-                  <p className="text-xl text-amber-400 font-semibold mb-8">{locations[selectedLocation].city}</p>
-
-                  <a
-                    href={`https://maps.google.com/?q=${encodeURIComponent(locations[selectedLocation].address + ' ' + locations[selectedLocation].city)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-10 py-5 rounded-full text-lg font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50"
-                  >
-                    <MapPin size={22} />
-                    Open in Google Maps
-                  </a>
-                  <p className="text-gray-600 text-sm mt-6">Opens in Google Maps or your Maps app</p>
-                </div>
+                </>
               ) : (
-                <div className="text-center">
-                  <div className="w-28 h-28 bg-zinc-800 rounded-full flex items-center justify-center mx-auto mb-8 border border-zinc-700">
-                    <MapPin size={52} className="text-amber-400/50" />
+                <div className="flex flex-1 items-center justify-center bg-zinc-900 min-h-[300px]">
+                  <div className="text-center p-8">
+                    <div className="w-20 h-20 bg-zinc-800 rounded-full flex items-center justify-center mx-auto mb-6 border border-zinc-700">
+                      <MapPin size={40} className="text-amber-400/50" />
+                    </div>
+                    <h3 className="text-2xl font-bold mb-3 text-amber-400">Coming Soon!</h3>
+                    <p className="text-gray-300 mb-6">Our {locations[selectedLocation].name} location is opening soon.</p>
+                    <a href="tel:3473684407" className="inline-block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition-all">
+                      Call for Updates
+                    </a>
                   </div>
-                  <h3 className="text-3xl font-bold mb-4 text-amber-400">Coming Soon!</h3>
-                  <p className="text-xl text-gray-300 mb-8">
-                    Our {locations[selectedLocation].name} location is opening soon.
-                  </p>
-                  <a
-                    href="tel:3473684407"
-                    className="inline-block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition-all"
-                  >
-                    Call for Updates
-                  </a>
                 </div>
               )}
             </div>
