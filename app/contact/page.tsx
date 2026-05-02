@@ -21,13 +21,13 @@ export default function Contact() {
       name: 'College Point',
       address: '15-20 College Point Blvd',
       city: 'College Point, NY 11356',
-      mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3019.8659654285487!2d-73.84728!3d40.78556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ3JzA4LjIiTiA3M8KwNTAnNDguMSJX!5e0!3m2!1sen!2sus!4v1234567890',
+      mapEmbed: 'https://maps.google.com/maps?q=15-20+College+Point+Blvd+College+Point+NY+11356&t=&z=15&ie=UTF8&iwloc=&output=embed',
     },
     {
       name: 'Queens Public Library',
       address: '89-11 Merrick Blvd',
       city: 'Jamaica, NY 11432',
-      mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3026.5!2d-73.7945!3d40.7023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQyJzA4LjMiTiA3M8KwNDcnNDAuMiJX!5e0!3m2!1sen!2sus!4v1234567890',
+      mapEmbed: 'https://maps.google.com/maps?q=89-11+Merrick+Blvd+Jamaica+NY+11432&t=&z=15&ie=UTF8&iwloc=&output=embed',
     },
     {
       name: 'JFK Airport',
@@ -332,7 +332,7 @@ export default function Contact() {
           </div>
           <div className="border-t border-zinc-900 pt-8 text-center text-gray-500">
             <p>© 2025 Sabor Restaurant & Bakery. All rights reserved.</p>
-            <p className="mt-2 text-sm">Built with ❤️ by Kazi & Deedat</p>
+            <p className="mt-2 text-sm">Developed by Deka Solutions</p>
           </div>
         </div>
       </footer>

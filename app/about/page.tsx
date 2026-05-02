@@ -246,7 +246,7 @@ export default function About() {
           </div>
           <div className="border-t border-zinc-900 pt-8 text-center text-gray-500">
             <p>© 2025 Sabor Restaurant & Bakery. All rights reserved.</p>
-            <p className="mt-2 text-sm">Built with ❤️ by Kazi & Deedat</p>
+            <p className="mt-2 text-sm">Developed by Deka Solutions</p>
           </div>
         </div>
       </footer>
