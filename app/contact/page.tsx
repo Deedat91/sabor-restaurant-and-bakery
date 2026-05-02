@@ -155,7 +155,7 @@ export default function Contact() {
       {/* Contact Info & Map */}
       <section className="py-20 bg-gradient-to-b from-zinc-900 to-black">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-start">
+          <div className="grid md:grid-cols-2 gap-12 items-stretch">
             <div className="space-y-8">
               <div 
                 className="bg-gradient-to-br from-zinc-900 to-black p-8 rounded-3xl border border-zinc-800 hover:border-amber-500/50 transition-all"
@@ -212,14 +212,14 @@ export default function Contact() {
             </div>
 
             {/* Map */}
-            <div className="w-full rounded-3xl overflow-hidden border border-zinc-800">
+            <div className="w-full rounded-3xl overflow-hidden border border-zinc-800 flex flex-col">
               {locations[selectedLocation].mapEmbed ? (
                 <>
                   <iframe
                     key={selectedLocation}
                     src={locations[selectedLocation].mapEmbed}
                     width="100%"
-                    height="380"
+                    className="flex-1 min-h-[260px]"
                     style={{ border: 0, display: 'block' }}
                     allowFullScreen
                     loading="lazy"
@@ -241,7 +241,7 @@ export default function Contact() {
                   </div>
                 </>
               ) : (
-                <div className="flex items-center justify-center bg-zinc-900 min-h-[300px]">
+                <div className="flex flex-1 items-center justify-center bg-zinc-900 min-h-[300px]">
                   <div className="text-center p-8">
                     <div className="w-20 h-20 bg-zinc-800 rounded-full flex items-center justify-center mx-auto mb-6 border border-zinc-700">
                       <MapPin size={40} className="text-amber-400/50" />
