@@ -62,3 +62,13 @@ input, select, textarea, button { font-size: 16px; }
   margin-left: 50%;
   transform: translateX(-50%);
 }
+
+/* EBT floater bounce: 2 bounces then a pause, repeat */
+@keyframes ebtBounce {
+  0%   { transform: translateY(0); }
+  8%   { transform: translateY(-10px); }
+  16%  { transform: translateY(0); }
+  24%  { transform: translateY(-6px); }
+  32%  { transform: translateY(0); }
+  100% { transform: translateY(0); }
+}
