@@ -27,13 +27,13 @@ export default function Home() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
+          <div className="relative flex items-center h-20">
+            <div className="flex-shrink-0">
               <PotIcon />
             </div>
-            
-            {/* Desktop Menu */}
-            <div className="hidden md:flex space-x-8 items-center">
+
+            {/* Desktop Menu — absolutely centered */}
+            <div className="absolute left-1/2 -translate-x-1/2 hidden md:flex space-x-6 items-center">
               <Link href="/" className="text-amber-400 transition-all duration-300 relative group">
                 Home
                 <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-gradient-to-r from-amber-400 to-orange-500" />
@@ -60,20 +60,20 @@ export default function Home() {
               </Link>
             </div>
 
-            <a 
-              href="tel:3473684407"
-              className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50"
-            >
-              Order Now
-            </a>
-
-            {/* Mobile Menu Button */}
-            <button 
+            <div className="ml-auto flex items-center gap-3">
+              <a
+                href="tel:3473684407"
+                className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50"
+              >
+                Order Now
+              </a>
+              <button
               className="md:hidden text-white"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X size={28} /> : <MenuIcon size={28} />}
             </button>
+            </div>
           </div>
         </div>
 

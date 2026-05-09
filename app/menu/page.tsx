@@ -416,9 +416,9 @@ export default function MenuPage() {
       {/* ── Navigation ── */}
       <nav className="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-xl shadow-2xl py-2">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
+          <div className="relative flex items-center h-20">
             <PotIcon />
-            <div className="hidden md:flex space-x-8 items-center">
+            <div className="absolute left-1/2 -translate-x-1/2 hidden md:flex space-x-6 items-center">
               {navLinks.map(([href, label]) => (
                 <Link key={href} href={href}
                   className={`transition-all duration-300 relative group ${href === '/menu' ? 'text-amber-400' : 'text-white/70 hover:text-white'}`}>
@@ -427,12 +427,14 @@ export default function MenuPage() {
                 </Link>
               ))}
             </div>
-            <a href="tel:3473684407" className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50">
-              Order Now
-            </a>
-            <button className="md:hidden text-white" onClick={() => setIsNavOpen(!isNavOpen)}>
-              {isNavOpen ? <X size={28} /> : <MenuIcon size={28} />}
-            </button>
+            <div className="ml-auto flex items-center gap-3">
+              <a href="tel:3473684407" className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50">
+                Order Now
+              </a>
+              <button className="md:hidden text-white" onClick={() => setIsNavOpen(!isNavOpen)}>
+                {isNavOpen ? <X size={28} /> : <MenuIcon size={28} />}
+              </button>
+            </div>
           </div>
         </div>
         <div className={`md:hidden absolute top-20 left-0 w-full bg-black/95 backdrop-blur-xl transition-all duration-300 ${isNavOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
@@ -462,7 +464,7 @@ export default function MenuPage() {
 
           {/* ── EN / ES language toggle ── */}
           <div className="flex items-center gap-3 bg-black/50 backdrop-blur-sm border border-white/10 rounded-full px-5 py-2.5">
-            <span className={`text-sm font-bold transition-colors ${lang === 'es' ? 'text-amber-400' : 'text-white/40'}`}>ES</span>
+            <span className={`text-sm font-bold transition-colors ${lang === 'es' ? 'text-amber-400' : 'text-white/40'}`}>Español</span>
             <button
               onClick={() => setLang(lang === 'es' ? 'en' : 'es')}
               className="relative w-12 h-6 rounded-full transition-colors duration-300 focus:outline-none"
@@ -474,7 +476,7 @@ export default function MenuPage() {
                 style={{ transform: lang === 'en' ? 'translateX(24px)' : 'translateX(0px)' }}
               />
             </button>
-            <span className={`text-sm font-bold transition-colors ${lang === 'en' ? 'text-amber-400' : 'text-white/40'}`}>EN</span>
+            <span className={`text-sm font-bold transition-colors ${lang === 'en' ? 'text-amber-400' : 'text-white/40'}`}>English</span>
           </div>
         </div>
       </section>

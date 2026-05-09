@@ -33,9 +33,9 @@ export default function Gallery() {
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-xl shadow-2xl py-2">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            <PotIcon />
-            <div className="hidden md:flex space-x-8 items-center">
+          <div className="relative flex items-center h-20">
+            <div className="flex-shrink-0"><PotIcon /></div>
+            <div className="absolute left-1/2 -translate-x-1/2 hidden md:flex space-x-6 items-center">
               {[['/', 'Home'], ['/about', 'About'], ['/menu', 'Menu'], ['/catering', 'Catering']].map(([href, label]) => (
                 <Link key={href} href={href} className="text-white/70 hover:text-white transition-all duration-300 relative group">
                   {label}
@@ -51,12 +51,14 @@ export default function Gallery() {
                 <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-gradient-to-r from-amber-400 to-orange-500 group-hover:w-full transition-all duration-300" />
               </Link>
             </div>
-            <a href="tel:3473684407" className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50">
-              Order Now
-            </a>
-            <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isMenuOpen ? <X size={28} /> : <MenuIcon size={28} />}
-            </button>
+            <div className="ml-auto flex items-center gap-3">
+              <a href="tel:3473684407" className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50">
+                Order Now
+              </a>
+              <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                {isMenuOpen ? <X size={28} /> : <MenuIcon size={28} />}
+              </button>
+            </div>
           </div>
         </div>
         <div className={`md:hidden absolute top-20 left-0 w-full bg-black/95 backdrop-blur-xl transition-all duration-300 ${isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
