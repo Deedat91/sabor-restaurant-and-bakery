@@ -453,11 +453,11 @@ export default function MenuPage() {
         className="relative h-[45vh] flex items-center justify-center overflow-hidden mt-20"
         style={{
           background: `linear-gradient(to bottom, rgba(0,0,0,0.62), rgba(0,0,0,0.58)), url('/images/menu/SaborRestaurantAndBakery_Hero.jpg')`,
-          backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed',
+          backgroundSize: 'cover', backgroundPosition: 'center',
         }}
       >
         <div className="relative z-10 text-center px-4 flex flex-col items-center gap-6">
-          <h1 className="text-6xl md:text-7xl font-black bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
+          <h1 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
             Our Menu
           </h1>
           <p className="text-white/70 text-lg">Authentic Dominican & Colombian cuisine</p>
@@ -484,27 +484,27 @@ export default function MenuPage() {
       {/* ── Tab switcher (sticky) ── */}
       <div className="sticky top-20 z-40 bg-black/95 backdrop-blur-xl border-b border-zinc-800 py-4">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex gap-3 justify-center">
+          <div className="flex flex-wrap gap-3 justify-center">
             <button
               onClick={() => setTab('restaurant')}
-              className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300 ${
+              className={`flex items-center gap-2 px-4 sm:px-6 py-3 rounded-full font-semibold text-xs sm:text-sm transition-all duration-300 ${
                 tab === 'restaurant'
                   ? 'bg-gradient-to-r from-amber-500 to-orange-600 text-white shadow-lg shadow-amber-500/40 scale-105'
                   : 'bg-zinc-900 text-gray-400 hover:text-white hover:bg-zinc-800'
               }`}
             >
-              <UtensilsCrossed size={16} />
+              <UtensilsCrossed size={15} />
               Restaurant — College Point
             </button>
             <button
               onClick={() => setTab('deli')}
-              className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300 ${
+              className={`flex items-center gap-2 px-4 sm:px-6 py-3 rounded-full font-semibold text-xs sm:text-sm transition-all duration-300 ${
                 tab === 'deli'
                   ? 'bg-gradient-to-r from-amber-500 to-orange-600 text-white shadow-lg shadow-amber-500/40 scale-105'
                   : 'bg-zinc-900 text-gray-400 hover:text-white hover:bg-zinc-800'
               }`}
             >
-              <ShoppingBag size={16} />
+              <ShoppingBag size={15} />
               Deli — QPL / JFK / Brooklyn
             </button>
           </div>

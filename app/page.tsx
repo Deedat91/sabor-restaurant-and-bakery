@@ -101,14 +101,13 @@ export default function Home() {
       </nav>
 
       {/* Hero Section - Parallax */}
-      <section 
+      <section
         id="home"
         className="relative h-screen flex items-center justify-center overflow-hidden"
         style={{
           background: `linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1600&q=80')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
         }}
       >
         <div 
@@ -172,23 +171,16 @@ export default function Home() {
       </section>
 
       {/* About Section with LIQUID SLIDE ANIMATIONS */}
-      <section className="py-32 bg-gradient-to-b from-black via-zinc-900 to-black relative overflow-hidden">
+      <section className="py-16 md:py-32 bg-gradient-to-b from-black via-zinc-900 to-black relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxIDAgNiAyLjY5IDYgNnMtMi42OSA2LTYgNi02LTIuNjktNi02IDIuNjktNiA2LTZ6TTI0IDM2YzMuMzEgMCA2IDIuNjkgNiA2cy0yLjY5IDYtNiA2LTYtMi42OS02LTYgMi42OS02IDYtNnoiIHN0cm9rZT0iIzIyMiIgc3Ryb2tlLXdpZHRoPSIuNSIgb3BhY2l0eT0iLjEiLz48L2c+PC9zdmc+')] opacity-20" />
         
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div 
-              className="space-y-6"
-              style={{
-                opacity: Math.min(1, Math.max(0, (scrollY - 400) / 300)),
-                transform: `translateX(${Math.min(0, Math.max(-50, -50 + (scrollY - 400) / 10))}px)`,
-                transition: 'transform 0.1s ease-out, opacity 0.3s ease-out',
-              }}
-            >
+            <div className="space-y-6">
               <div className="inline-block">
                 <span className="text-amber-400 text-sm font-semibold tracking-widest uppercase">Our Story</span>
               </div>
-              <h2 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
+              <h2 className="text-4xl md:text-6xl font-black bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
                 About Sabor
               </h2>
               <p className="text-xl text-gray-300 leading-relaxed">
@@ -223,14 +215,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div 
-              className="relative h-[600px] rounded-3xl overflow-hidden"
-              style={{
-                opacity: Math.min(1, Math.max(0, (scrollY - 400) / 300)),
-                transform: `translateX(${Math.max(0, Math.min(50, 50 - (scrollY - 400) / 10))}px)`,
-                transition: 'transform 0.1s ease-out, opacity 0.3s ease-out',
-              }}
-            >
+            <div className="relative h-64 md:h-[600px] rounded-3xl overflow-hidden">
               <div 
                 className="absolute inset-0 bg-cover bg-center"
                 style={{
@@ -247,10 +232,10 @@ export default function Home() {
       </section>
 
       {/* Quick Preview Section */}
-      <section className="py-32 bg-gradient-to-b from-zinc-900 to-black">
+      <section className="py-16 md:py-32 bg-gradient-to-b from-zinc-900 to-black">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
+          <div className="text-center mb-12 md:mb-20">
+            <h2 className="text-4xl md:text-6xl font-black mb-6 bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
               Experience Sabor
             </h2>
             <p className="text-xl text-gray-400">Explore our authentic Dominican & Colombian cuisine</p>
@@ -307,6 +292,7 @@ export default function Home() {
                 <li><Link href="/about" className="hover:text-white transition">About</Link></li>
                 <li><Link href="/menu" className="hover:text-white transition">Menu</Link></li>
                 <li><Link href="/catering" className="hover:text-white transition">Catering</Link></li>
+                <li><Link href="/gallery" className="hover:text-white transition">Gallery</Link></li>
                 <li><Link href="/contact" className="hover:text-white transition">Contact</Link></li>
               </ul>
             </div>

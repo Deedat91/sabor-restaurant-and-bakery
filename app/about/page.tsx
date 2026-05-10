@@ -1,19 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { MapPin, Phone, Instagram, Facebook, Menu as MenuIcon, X, Clock, Heart, Users, Award } from 'lucide-react';
 import PotIcon from '@/PotIcon';
 
 export default function About() {
-  const [scrollY, setScrollY] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const locations = [
     { name: 'College Point', address: '15-20 College Point Blvd, NY 11356' },
@@ -92,7 +85,6 @@ export default function About() {
           background: `linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1600&q=80')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
         }}
       >
         <div className="relative z-10 text-center px-4">
@@ -104,18 +96,12 @@ export default function About() {
       </section>
 
       {/* Main Content */}
-      <section className="py-32 bg-gradient-to-b from-black via-zinc-900 to-black">
+      <section className="py-16 md:py-32 bg-gradient-to-b from-black via-zinc-900 to-black">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-16 items-center mb-32">
-            <div 
-              className="space-y-6"
-              style={{
-                opacity: Math.min(1, scrollY / 300),
-                transform: `translateX(${Math.min(0, Math.max(-50, -50 + (scrollY - 400) / 10))}px)`,
-              }}
-            >
+          <div className="grid md:grid-cols-2 gap-16 items-center mb-16 md:mb-32">
+            <div className="space-y-6">
               <span className="text-amber-400 text-sm font-semibold tracking-widest uppercase">About Sabor</span>
-              <h2 className="text-5xl md:text-6xl font-black text-white">
+              <h2 className="text-4xl md:text-6xl font-black text-white">
                 Bringing Home to <span className="bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">New York</span>
               </h2>
               <p className="text-xl text-gray-300 leading-relaxed">
@@ -126,13 +112,7 @@ export default function About() {
               </p>
             </div>
 
-            <div 
-              className="relative h-[500px] rounded-3xl overflow-hidden"
-              style={{
-                opacity: Math.min(1, scrollY / 300),
-                transform: `translateX(${Math.min(50, 50 - scrollY / 10)}px)`,
-              }}
-            >
+            <div className="relative h-64 md:h-[500px] rounded-3xl overflow-hidden">
               <div 
                 className="absolute inset-0 bg-cover bg-center"
                 style={{
@@ -144,7 +124,7 @@ export default function About() {
           </div>
 
           {/* Values Section */}
-          <div className="grid md:grid-cols-3 gap-8 mb-32">
+          <div className="grid md:grid-cols-3 gap-8 mb-16 md:mb-32">
             <div className="bg-gradient-to-br from-zinc-900 to-black p-8 rounded-3xl border border-amber-500/30 hover:border-amber-500 transition-all duration-500 hover:scale-105">
               <Heart className="w-16 h-16 text-amber-400 mb-6" />
               <h3 className="text-3xl font-bold mb-4">Passion</h3>
@@ -219,6 +199,7 @@ export default function About() {
                 <li><Link href="/about" className="hover:text-white transition">About</Link></li>
                 <li><Link href="/menu" className="hover:text-white transition">Menu</Link></li>
                 <li><Link href="/catering" className="hover:text-white transition">Catering</Link></li>
+                <li><Link href="/gallery" className="hover:text-white transition">Gallery</Link></li>
                 <li><Link href="/contact" className="hover:text-white transition">Contact</Link></li>
               </ul>
             </div>
