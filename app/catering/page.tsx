@@ -1,31 +1,21 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { Instagram, Facebook, Menu as MenuIcon, X, UtensilsCrossed, Clock, Sparkles, Users, Award, Phone, Mail } from 'lucide-react';
 import PotIcon from '@/PotIcon';
 
 export default function Catering() {
-  const [scrollY, setScrollY] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-xl shadow-2xl py-2">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
-              <PotIcon />
-            </div>
-            
-            <div className="hidden md:flex space-x-8 items-center">
+          <div className="relative flex items-center h-20">
+            <div className="flex-shrink-0"><PotIcon /></div>
+            <div className="absolute left-1/2 -translate-x-1/2 hidden md:flex space-x-6 items-center">
               <Link href="/" className="text-white/70 hover:text-white transition-all duration-300 relative group">
                 Home
                 <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-gradient-to-r from-amber-400 to-orange-500 group-hover:w-full transition-all duration-300" />
@@ -42,25 +32,23 @@ export default function Catering() {
                 Catering
                 <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-gradient-to-r from-amber-400 to-orange-500" />
               </Link>
+              <Link href="/gallery" className="text-white/70 hover:text-white transition-all duration-300 relative group">
+                Gallery
+                <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-gradient-to-r from-amber-400 to-orange-500 group-hover:w-full transition-all duration-300" />
+              </Link>
               <Link href="/contact" className="text-white/70 hover:text-white transition-all duration-300 relative group">
                 Contact
                 <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-gradient-to-r from-amber-400 to-orange-500 group-hover:w-full transition-all duration-300" />
               </Link>
             </div>
-
-            <a 
-              href="tel:3473684407"
-              className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50"
-            >
-              Order Now
-            </a>
-
-            <button 
-              className="md:hidden text-white"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <X size={28} /> : <MenuIcon size={28} />}
-            </button>
+            <div className="ml-auto flex items-center gap-3">
+              <a href="tel:3473684407" className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50">
+                Order Now
+              </a>
+              <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                {isMenuOpen ? <X size={28} /> : <MenuIcon size={28} />}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -75,6 +63,7 @@ export default function Catering() {
             <Link href="/about" className="text-lg hover:text-amber-400 transition" onClick={() => setIsMenuOpen(false)}>About</Link>
             <Link href="/menu" className="text-lg hover:text-amber-400 transition" onClick={() => setIsMenuOpen(false)}>Menu</Link>
             <Link href="/catering" className="text-lg text-amber-400" onClick={() => setIsMenuOpen(false)}>Catering</Link>
+            <Link href="/gallery" className="text-lg hover:text-amber-400 transition" onClick={() => setIsMenuOpen(false)}>Gallery</Link>
             <Link href="/contact" className="text-lg hover:text-amber-400 transition" onClick={() => setIsMenuOpen(false)}>Contact</Link>
           </div>
         </div>
@@ -87,12 +76,11 @@ export default function Catering() {
           background: `linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1555244162-803834f70033?w=1600&q=80')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
         }}
       >
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <Sparkles className="w-16 h-16 mx-auto mb-6 text-amber-400 animate-pulse" />
-          <h1 className="text-6xl md:text-7xl font-black bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent mb-6">
+          <h1 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent mb-6">
             Catering Services
           </h1>
           <p className="text-2xl md:text-3xl text-white/90 mb-8">
@@ -105,23 +93,17 @@ export default function Catering() {
       </section>
 
       {/* Services Section */}
-      <section className="py-32 bg-gradient-to-b from-black to-zinc-900">
+      <section className="py-16 md:py-32 bg-gradient-to-b from-black to-zinc-900">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-20">
+          <div className="text-center mb-10 md:mb-20">
             <span className="text-amber-400 text-sm font-semibold tracking-widest uppercase">What We Offer</span>
-            <h2 className="text-5xl md:text-6xl font-black mt-4 mb-6 text-white">
+            <h2 className="text-4xl md:text-6xl font-black mt-4 mb-6 text-white">
               Perfect for <span className="bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">Every Occasion</span>
             </h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <div 
-              className="bg-gradient-to-br from-zinc-900 to-black p-8 rounded-3xl border border-amber-500/30 hover:border-amber-500 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-amber-500/20"
-              style={{
-                opacity: Math.min(1, scrollY / 300),
-                transform: `translateY(${Math.max(0, 50 - scrollY / 10)}px)`,
-              }}
-            >
+            <div className="bg-gradient-to-br from-zinc-900 to-black p-8 rounded-3xl border border-amber-500/30 hover:border-amber-500 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-amber-500/20">
               <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6">
                 <UtensilsCrossed className="w-8 h-8 text-white" />
               </div>
@@ -131,14 +113,7 @@ export default function Catering() {
               </p>
             </div>
 
-            <div 
-              className="bg-gradient-to-br from-zinc-900 to-black p-8 rounded-3xl border border-amber-500/30 hover:border-amber-500 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-amber-500/20"
-              style={{
-                opacity: Math.min(1, scrollY / 300),
-                transform: `translateY(${Math.max(0, 50 - scrollY / 10)}px)`,
-                transitionDelay: '100ms',
-              }}
-            >
+            <div className="bg-gradient-to-br from-zinc-900 to-black p-8 rounded-3xl border border-amber-500/30 hover:border-amber-500 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-amber-500/20">
               <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6">
                 <Users className="w-8 h-8 text-white" />
               </div>
@@ -148,14 +123,7 @@ export default function Catering() {
               </p>
             </div>
 
-            <div 
-              className="bg-gradient-to-br from-zinc-900 to-black p-8 rounded-3xl border border-amber-500/30 hover:border-amber-500 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-amber-500/20"
-              style={{
-                opacity: Math.min(1, scrollY / 300),
-                transform: `translateY(${Math.max(0, 50 - scrollY / 10)}px)`,
-                transitionDelay: '200ms',
-              }}
-            >
+            <div className="bg-gradient-to-br from-zinc-900 to-black p-8 rounded-3xl border border-amber-500/30 hover:border-amber-500 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-amber-500/20">
               <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6">
                 <Clock className="w-8 h-8 text-white" />
               </div>
@@ -167,7 +135,7 @@ export default function Catering() {
           </div>
 
           {/* Event Types */}
-          <div className="mt-32">
+          <div className="mt-16 md:mt-32">
             <h3 className="text-4xl font-black text-center mb-16 bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
               Events We Cater
             </h3>
@@ -196,7 +164,7 @@ export default function Catering() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-32 bg-gradient-to-b from-zinc-900 to-black">
+      <section className="py-16 md:py-32 bg-gradient-to-b from-zinc-900 to-black">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <div className="bg-gradient-to-br from-amber-500/10 to-orange-500/10 p-12 md:p-16 rounded-3xl border border-amber-500/30 text-center">
             <Award className="w-20 h-20 text-amber-400 mx-auto mb-8" />
@@ -255,6 +223,7 @@ export default function Catering() {
                 <li><Link href="/about" className="hover:text-white transition">About</Link></li>
                 <li><Link href="/menu" className="hover:text-white transition">Menu</Link></li>
                 <li><Link href="/catering" className="hover:text-white transition">Catering</Link></li>
+                <li><Link href="/gallery" className="hover:text-white transition">Gallery</Link></li>
                 <li><Link href="/contact" className="hover:text-white transition">Contact</Link></li>
               </ul>
             </div>

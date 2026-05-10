@@ -1,20 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { MapPin, Phone, Mail, Instagram, Facebook, Menu as MenuIcon, X, Clock } from 'lucide-react';
 import PotIcon from '@/PotIcon';
 
 export default function Contact() {
-  const [scrollY, setScrollY] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const locations = [
     {
@@ -52,12 +45,9 @@ export default function Contact() {
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-xl shadow-2xl py-2">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
-              <PotIcon />
-            </div>
-            
-            <div className="hidden md:flex space-x-8 items-center">
+          <div className="relative flex items-center h-20">
+            <div className="flex-shrink-0"><PotIcon /></div>
+            <div className="absolute left-1/2 -translate-x-1/2 hidden md:flex space-x-6 items-center">
               <Link href="/" className="text-white/70 hover:text-white transition-all duration-300 relative group">
                 Home
                 <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-gradient-to-r from-amber-400 to-orange-500 group-hover:w-full transition-all duration-300" />
@@ -74,25 +64,23 @@ export default function Contact() {
                 Catering
                 <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-gradient-to-r from-amber-400 to-orange-500 group-hover:w-full transition-all duration-300" />
               </Link>
+              <Link href="/gallery" className="text-white/70 hover:text-white transition-all duration-300 relative group">
+                Gallery
+                <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-gradient-to-r from-amber-400 to-orange-500 group-hover:w-full transition-all duration-300" />
+              </Link>
               <Link href="/contact" className="text-amber-400 transition-all duration-300 relative group">
                 Contact
                 <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-gradient-to-r from-amber-400 to-orange-500" />
               </Link>
             </div>
-
-            <a 
-              href="tel:3473684407"
-              className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50"
-            >
-              Order Now
-            </a>
-
-            <button 
-              className="md:hidden text-white"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <X size={28} /> : <MenuIcon size={28} />}
-            </button>
+            <div className="ml-auto flex items-center gap-3">
+              <a href="tel:3473684407" className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50">
+                Order Now
+              </a>
+              <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                {isMenuOpen ? <X size={28} /> : <MenuIcon size={28} />}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -107,6 +95,7 @@ export default function Contact() {
             <Link href="/about" className="text-lg hover:text-amber-400 transition" onClick={() => setIsMenuOpen(false)}>About</Link>
             <Link href="/menu" className="text-lg hover:text-amber-400 transition" onClick={() => setIsMenuOpen(false)}>Menu</Link>
             <Link href="/catering" className="text-lg hover:text-amber-400 transition" onClick={() => setIsMenuOpen(false)}>Catering</Link>
+            <Link href="/gallery" className="text-lg hover:text-amber-400 transition" onClick={() => setIsMenuOpen(false)}>Gallery</Link>
             <Link href="/contact" className="text-lg text-amber-400" onClick={() => setIsMenuOpen(false)}>Contact</Link>
           </div>
         </div>
@@ -119,11 +108,10 @@ export default function Contact() {
           background: `linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&q=80')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
         }}
       >
         <div className="relative z-10 text-center px-4">
-          <h1 className="text-6xl md:text-7xl font-black bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent mb-6">
+          <h1 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent mb-6">
             Visit Us
           </h1>
           <p className="text-2xl text-white/90">We have 4 locations to serve you</p>
@@ -157,12 +145,7 @@ export default function Contact() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-stretch">
             <div className="space-y-8">
-              <div 
-                className="bg-gradient-to-br from-zinc-900 to-black p-8 rounded-3xl border border-zinc-800 hover:border-amber-500/50 transition-all"
-                style={{
-                  opacity: Math.min(1, scrollY / 300),
-                }}
-              >
+              <div className="bg-gradient-to-br from-zinc-900 to-black p-8 rounded-3xl border border-zinc-800 hover:border-amber-500/50 transition-all">
                 <MapPin className="w-12 h-12 text-amber-400 mb-4" />
                 <h3 className="text-3xl font-bold mb-3 text-amber-400">{locations[selectedLocation].name}</h3>
                 <p className="text-gray-300 text-xl mb-2">{locations[selectedLocation].address}</p>
@@ -262,7 +245,7 @@ export default function Contact() {
       {/* All Locations Overview */}
       <section className="py-20 bg-black">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <h2 className="text-5xl font-black text-center mb-16 bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-black text-center mb-10 md:mb-16 bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
             All Locations
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -326,6 +309,7 @@ export default function Contact() {
                 <li><Link href="/about" className="hover:text-white transition">About</Link></li>
                 <li><Link href="/menu" className="hover:text-white transition">Menu</Link></li>
                 <li><Link href="/catering" className="hover:text-white transition">Catering</Link></li>
+                <li><Link href="/gallery" className="hover:text-white transition">Gallery</Link></li>
                 <li><Link href="/contact" className="hover:text-white transition">Contact</Link></li>
               </ul>
             </div>

@@ -27,13 +27,13 @@ export default function Home() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
+          <div className="relative flex items-center h-20">
+            <div className="flex-shrink-0">
               <PotIcon />
             </div>
-            
-            {/* Desktop Menu */}
-            <div className="hidden md:flex space-x-8 items-center">
+
+            {/* Desktop Menu — absolutely centered */}
+            <div className="absolute left-1/2 -translate-x-1/2 hidden md:flex space-x-6 items-center">
               <Link href="/" className="text-amber-400 transition-all duration-300 relative group">
                 Home
                 <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-gradient-to-r from-amber-400 to-orange-500" />
@@ -50,26 +50,30 @@ export default function Home() {
                 Catering
                 <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-gradient-to-r from-amber-400 to-orange-500 group-hover:w-full transition-all duration-300" />
               </Link>
+              <Link href="/gallery" className="text-white/70 hover:text-white transition-all duration-300 relative group">
+                Gallery
+                <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-gradient-to-r from-amber-400 to-orange-500 group-hover:w-full transition-all duration-300" />
+              </Link>
               <Link href="/contact" className="text-white/70 hover:text-white transition-all duration-300 relative group">
                 Contact
                 <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-gradient-to-r from-amber-400 to-orange-500 group-hover:w-full transition-all duration-300" />
               </Link>
             </div>
 
-            <a 
-              href="tel:3473684407"
-              className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50"
-            >
-              Order Now
-            </a>
-
-            {/* Mobile Menu Button */}
-            <button 
+            <div className="ml-auto flex items-center gap-3">
+              <a
+                href="tel:3473684407"
+                className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50"
+              >
+                Order Now
+              </a>
+              <button
               className="md:hidden text-white"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X size={28} /> : <MenuIcon size={28} />}
             </button>
+            </div>
           </div>
         </div>
 
@@ -84,6 +88,7 @@ export default function Home() {
             <Link href="/about" className="text-lg hover:text-amber-400 transition" onClick={() => setIsMenuOpen(false)}>About</Link>
             <Link href="/menu" className="text-lg hover:text-amber-400 transition" onClick={() => setIsMenuOpen(false)}>Menu</Link>
             <Link href="/catering" className="text-lg hover:text-amber-400 transition" onClick={() => setIsMenuOpen(false)}>Catering</Link>
+            <Link href="/gallery" className="text-lg hover:text-amber-400 transition" onClick={() => setIsMenuOpen(false)}>Gallery</Link>
             <Link href="/contact" className="text-lg hover:text-amber-400 transition" onClick={() => setIsMenuOpen(false)}>Contact</Link>
             <a 
               href="tel:3473684407"
@@ -96,14 +101,13 @@ export default function Home() {
       </nav>
 
       {/* Hero Section - Parallax */}
-      <section 
+      <section
         id="home"
         className="relative h-screen flex items-center justify-center overflow-hidden"
         style={{
           background: `linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1600&q=80')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
         }}
       >
         <div 
@@ -167,23 +171,16 @@ export default function Home() {
       </section>
 
       {/* About Section with LIQUID SLIDE ANIMATIONS */}
-      <section className="py-32 bg-gradient-to-b from-black via-zinc-900 to-black relative overflow-hidden">
+      <section className="py-16 md:py-32 bg-gradient-to-b from-black via-zinc-900 to-black relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxIDAgNiAyLjY5IDYgNnMtMi42OSA2LTYgNi02LTIuNjktNi02IDIuNjktNiA2LTZ6TTI0IDM2YzMuMzEgMCA2IDIuNjkgNiA2cy0yLjY5IDYtNiA2LTYtMi42OS02LTYgMi42OS02IDYtNnoiIHN0cm9rZT0iIzIyMiIgc3Ryb2tlLXdpZHRoPSIuNSIgb3BhY2l0eT0iLjEiLz48L2c+PC9zdmc+')] opacity-20" />
         
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div 
-              className="space-y-6"
-              style={{
-                opacity: Math.min(1, Math.max(0, (scrollY - 400) / 300)),
-                transform: `translateX(${Math.min(0, Math.max(-50, -50 + (scrollY - 400) / 10))}px)`,
-                transition: 'transform 0.1s ease-out, opacity 0.3s ease-out',
-              }}
-            >
+            <div className="space-y-6">
               <div className="inline-block">
                 <span className="text-amber-400 text-sm font-semibold tracking-widest uppercase">Our Story</span>
               </div>
-              <h2 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
+              <h2 className="text-4xl md:text-6xl font-black bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
                 About Sabor
               </h2>
               <p className="text-xl text-gray-300 leading-relaxed">
@@ -218,14 +215,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div 
-              className="relative h-[600px] rounded-3xl overflow-hidden"
-              style={{
-                opacity: Math.min(1, Math.max(0, (scrollY - 400) / 300)),
-                transform: `translateX(${Math.max(0, Math.min(50, 50 - (scrollY - 400) / 10))}px)`,
-                transition: 'transform 0.1s ease-out, opacity 0.3s ease-out',
-              }}
-            >
+            <div className="relative h-64 md:h-[600px] rounded-3xl overflow-hidden">
               <div 
                 className="absolute inset-0 bg-cover bg-center"
                 style={{
@@ -242,10 +232,10 @@ export default function Home() {
       </section>
 
       {/* Quick Preview Section */}
-      <section className="py-32 bg-gradient-to-b from-zinc-900 to-black">
+      <section className="py-16 md:py-32 bg-gradient-to-b from-zinc-900 to-black">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
+          <div className="text-center mb-12 md:mb-20">
+            <h2 className="text-4xl md:text-6xl font-black mb-6 bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
               Experience Sabor
             </h2>
             <p className="text-xl text-gray-400">Explore our authentic Dominican & Colombian cuisine</p>
@@ -302,6 +292,7 @@ export default function Home() {
                 <li><Link href="/about" className="hover:text-white transition">About</Link></li>
                 <li><Link href="/menu" className="hover:text-white transition">Menu</Link></li>
                 <li><Link href="/catering" className="hover:text-white transition">Catering</Link></li>
+                <li><Link href="/gallery" className="hover:text-white transition">Gallery</Link></li>
                 <li><Link href="/contact" className="hover:text-white transition">Contact</Link></li>
               </ul>
             </div>
