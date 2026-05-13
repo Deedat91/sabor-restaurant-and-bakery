@@ -315,10 +315,10 @@ const restaurantMenu: MenuSection[] = [
 /* ─── Deli: Queens Library / JFK Airport / Brooklyn Navy Yard ─── */
 const deliMenu: DeliSection[] = [
   {
-    en: 'Platter', es: 'Bandeja', emoji: '🍱',
+    en: 'Combos', es: 'Combos', emoji: '🍱',
     items: [
-      { en: 'Medium Platter', es: 'Bandeja Mediana', price: '$12.00' },
-      { en: 'Large Platter', es: 'Bandeja Grande', price: '$15.00' },
+      { en: 'Combo 1', es: 'Combo 1', price: '$12.00' },
+      { en: 'Combo 2', es: 'Combo 2', price: '$15.00' },
     ],
   },
   {
@@ -642,6 +642,9 @@ export default function MenuPage() {
               <div className="flex gap-4">
                 <a href="https://instagram.com/saborrestaurantbakery" target="_blank" className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all"><Instagram size={20} /></a>
                 <a href="https://facebook.com/saborrestaurantbakery" target="_blank" className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all"><Facebook size={20} /></a>
+                <a href="https://tiktok.com/@saborrestaurantbakery" target="_blank" className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all">
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.79a4.85 4.85 0 0 1-1.01-.1z"/></svg>
+                </a>
               </div>
             </div>
           </div>

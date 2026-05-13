@@ -190,18 +190,25 @@ export default function Home() {
                 We also offer catering for all occasions. Visit us today and experience the taste of Dominican Republic and Colombia.
               </p>
               
-              <div className="grid grid-cols-2 gap-6 pt-8">
-                <div className="bg-gradient-to-br from-amber-500/10 to-orange-500/10 p-6 rounded-2xl border border-amber-500/20 hover:scale-105 transition-transform">
-                  <Clock className="w-10 h-10 text-amber-400 mb-3" />
-                  <h3 className="font-bold text-xl mb-2">Hours</h3>
-                  <p className="text-gray-400">Open 7 Days</p>
-                  <p className="text-amber-400">6:30 AM - 10:00 PM</p>
-                </div>
-                <div className="bg-gradient-to-br from-amber-500/10 to-orange-500/10 p-6 rounded-2xl border border-amber-500/20 hover:scale-105 transition-transform">
-                  <MapPin className="w-10 h-10 text-amber-400 mb-3" />
-                  <h3 className="font-bold text-xl mb-2">Locations</h3>
-                  <p className="text-gray-400 text-sm">College Point · Queens Library</p>
-                  <p className="text-amber-400 text-sm">JFK Airport · Brooklyn</p>
+              <div className="pt-8">
+                <div className="bg-gradient-to-br from-amber-500/10 to-orange-500/10 p-6 rounded-2xl border border-amber-500/20">
+                  <div className="flex items-center gap-3 mb-4">
+                    <MapPin className="w-8 h-8 text-amber-400 flex-shrink-0" />
+                    <h3 className="font-bold text-xl">Locations & Hours</h3>
+                  </div>
+                  <div className="space-y-3">
+                    {[
+                      { name: 'College Point', hours: '6:30 AM – 10:00 PM · M–F' },
+                      { name: 'Queens Library', hours: '10:00 AM – 6:30 PM · M–F' },
+                      { name: 'JFK Airport', hours: '7:30 AM – 3:00 PM · M–F' },
+                      { name: 'Brooklyn', hours: '11:00 AM – 3:00 PM · M–F' },
+                    ].map((loc) => (
+                      <div key={loc.name} className="flex justify-between items-center border-b border-amber-500/10 pb-2 last:border-0 last:pb-0">
+                        <span className="text-gray-300 text-sm font-medium">{loc.name}</span>
+                        <span className="text-amber-400 text-sm text-right">{loc.hours}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
 
@@ -211,6 +218,9 @@ export default function Home() {
                 </a>
                 <a href="https://facebook.com/saborrestaurantbakery" target="_blank" className="text-amber-400 hover:text-amber-300 transition-all hover:scale-110 hover:rotate-12">
                   <Facebook size={32} />
+                </a>
+                <a href="https://tiktok.com/@saborrestaurantbakery" target="_blank" className="text-amber-400 hover:text-amber-300 transition-all hover:scale-110 hover:rotate-12">
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.79a4.85 4.85 0 0 1-1.01-.1z"/></svg>
                 </a>
               </div>
             </div>
@@ -314,6 +324,9 @@ export default function Home() {
                 </a>
                 <a href="https://facebook.com/saborrestaurantbakery" target="_blank" className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all">
                   <Facebook size={20} />
+                </a>
+                <a href="https://tiktok.com/@saborrestaurantbakery" target="_blank" className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all">
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.79a4.85 4.85 0 0 1-1.01-.1z"/></svg>
                 </a>
               </div>
             </div>

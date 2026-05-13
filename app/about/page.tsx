@@ -9,10 +9,10 @@ export default function About() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const locations = [
-    { name: 'College Point', address: '15-20 College Point Blvd, College Point, NY 11356', hours: '6:30 AM – 10:00 PM · Open 7 Days' },
-    { name: 'Queens Library', address: '89-11 Merrick Blvd, Jamaica, NY 11432', hours: 'Hours Coming Soon' },
-    { name: 'JFK Airport', address: 'Building 1111, JFK International, Jamaica, NY 11430', hours: 'Hours Coming Soon' },
-    { name: 'Brooklyn', address: '141 Flushing Ave, Building 77, Brooklyn, NY 11205', hours: 'Hours Coming Soon' },
+    { name: 'College Point', address: '15-20 College Point Blvd, College Point, NY 11356', hours: '6:30 AM – 10:00 PM · M–F' },
+    { name: 'Queens Library', address: '89-11 Merrick Blvd, Jamaica, NY 11432', hours: '10:00 AM – 6:30 PM · M–F' },
+    { name: 'JFK Airport', address: 'Building 1111, JFK International, Jamaica, NY 11430', hours: '7:30 AM – 3:00 PM · M–F' },
+    { name: 'Brooklyn', address: '141 Flushing Ave, Building 77, Brooklyn, NY 11205', hours: '11:00 AM – 3:00 PM · M–F' },
   ];
 
   return (
@@ -82,7 +82,7 @@ export default function About() {
       <section 
         className="relative h-[60vh] flex items-center justify-center overflow-hidden mt-20"
         style={{
-          background: `linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1600&q=80')`,
+          background: `linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('/images/menu/SaborRestaurantAndBakery_Hero.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -116,7 +116,7 @@ export default function About() {
               <div 
                 className="absolute inset-0 bg-cover bg-center"
                 style={{
-                  backgroundImage: "url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80')",
+                  backgroundImage: "url('/images/menu/SaborRestaurantAndBakery_Pernil.jpg')",
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -148,7 +148,7 @@ export default function About() {
           <div>
             <div className="text-center mb-12">
               <MapPin className="w-16 h-16 text-amber-400 mx-auto mb-4" />
-              <h3 className="text-4xl font-bold mb-4">Our Locations</h3>
+              <h3 className="text-4xl font-bold mb-4">Our Locations & Hours</h3>
               <p className="text-xl text-gray-400">Find us at one of our convenient locations</p>
             </div>
 
@@ -173,6 +173,9 @@ export default function About() {
               </a>
               <a href="https://facebook.com/saborrestaurantbakery" target="_blank" className="text-amber-400 hover:text-amber-300 transition-all hover:scale-110">
                 <Facebook size={40} />
+              </a>
+              <a href="https://tiktok.com/@saborrestaurantbakery" target="_blank" className="text-amber-400 hover:text-amber-300 transition-all hover:scale-110">
+                <svg viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.79a4.85 4.85 0 0 1-1.01-.1z"/></svg>
               </a>
             </div>
           </div>
@@ -214,6 +217,9 @@ export default function About() {
                 </a>
                 <a href="https://facebook.com/saborrestaurantbakery" target="_blank" className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all">
                   <Facebook size={20} />
+                </a>
+                <a href="https://tiktok.com/@saborrestaurantbakery" target="_blank" className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all">
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.79a4.85 4.85 0 0 1-1.01-.1z"/></svg>
                 </a>
               </div>
             </div>
