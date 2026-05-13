@@ -117,12 +117,13 @@ export default function Contact() {
       <section 
         className="relative h-[50vh] flex items-center justify-center overflow-hidden mt-20"
         style={{
-          background: `linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.25)), url('/images/menu/ContactHero.png')`,
+          background: `linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(0,0,0,0.55)), url('/images/menu/ContactHero.png')`,
           backgroundSize: 'cover',
           backgroundPosition: 'top center',
         }}
       >
         <div className="relative z-10 text-center px-4">
+          <MapPin className="w-16 h-16 mx-auto mb-6 text-amber-400 animate-pulse" />
           <h1 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent mb-6">
             Visit Us
           </h1>

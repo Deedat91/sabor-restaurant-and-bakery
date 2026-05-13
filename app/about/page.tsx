@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { MapPin, Instagram, Facebook, Menu as MenuIcon, X, Heart, Users, Award } from 'lucide-react';
+import { MapPin, Instagram, Facebook, Menu as MenuIcon, X, Heart, Users, Award, BookOpen } from 'lucide-react';
 import PotIcon from '@/PotIcon';
 
 export default function About() {
@@ -82,12 +82,13 @@ export default function About() {
       <section
         className="relative h-[60vh] flex items-center justify-center overflow-hidden mt-20"
         style={{
-          background: `linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.3)), url('/images/menu/AboutHero.png')`,
+          background: `linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(0,0,0,0.55)), url('/images/menu/AboutHero.png')`,
           backgroundSize: 'cover',
           backgroundPosition: 'top center',
         }}
       >
         <div className="relative z-10 text-center px-4">
+          <BookOpen className="w-16 h-16 mx-auto mb-6 text-amber-400 animate-pulse" />
           <h1 className="text-6xl md:text-7xl font-black bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent mb-6">
             Our Story
           </h1>

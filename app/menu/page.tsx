@@ -464,7 +464,8 @@ export default function MenuPage() {
           backgroundSize: 'cover', backgroundPosition: 'center',
         }}
       >
-        <div className="relative z-10 text-center px-4 flex flex-col items-center gap-6">
+        <div className="relative z-10 text-center px-4 flex flex-col items-center gap-4">
+          <UtensilsCrossed className="w-16 h-16 text-amber-400 animate-pulse" />
           <h1 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
             Our Menu
           </h1>
