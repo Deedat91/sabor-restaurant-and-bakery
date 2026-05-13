@@ -62,7 +62,7 @@ export default function Home() {
 
             <div className="ml-auto flex items-center gap-3">
               <a
-                href="tel:3473684407"
+                href="tel:6469156122"
                 className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50"
               >
                 Order Now
@@ -91,7 +91,7 @@ export default function Home() {
             <Link href="/gallery" className="text-lg hover:text-amber-400 transition" onClick={() => setIsMenuOpen(false)}>Gallery</Link>
             <Link href="/contact" className="text-lg hover:text-amber-400 transition" onClick={() => setIsMenuOpen(false)}>Contact</Link>
             <a 
-              href="tel:3473684407"
+              href="tel:6469156122"
               className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full text-center"
             >
               Order Now
@@ -105,7 +105,7 @@ export default function Home() {
         id="home"
         className="relative h-screen flex items-center justify-center overflow-hidden"
         style={{
-          background: `linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1600&q=80')`,
+          background: `linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.35)), url('/images/menu/SaborRestaurantAndBakery_Hero.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -150,10 +150,10 @@ export default function Home() {
                 </span>
               </Link>
               <a 
-                href="tel:3473684407"
+                href="tel:6469156122"
                 className="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white px-10 py-5 rounded-full text-xl font-semibold hover:bg-white/20 transition-all duration-300"
               >
-                (347) 368-4407
+                (646) 915-6122
               </a>
             </div>
           </div>
@@ -200,8 +200,8 @@ export default function Home() {
                 <div className="bg-gradient-to-br from-amber-500/10 to-orange-500/10 p-6 rounded-2xl border border-amber-500/20 hover:scale-105 transition-transform">
                   <MapPin className="w-10 h-10 text-amber-400 mb-3" />
                   <h3 className="font-bold text-xl mb-2">Locations</h3>
-                  <p className="text-gray-400 text-sm">Queens, College Point</p>
-                  <p className="text-amber-400 text-sm">JFK & Brooklyn</p>
+                  <p className="text-gray-400 text-sm">College Point · Queens Library</p>
+                  <p className="text-amber-400 text-sm">JFK Airport · Brooklyn</p>
                 </div>
               </div>
 
@@ -216,10 +216,10 @@ export default function Home() {
             </div>
 
             <div className="relative h-64 md:h-[600px] rounded-3xl overflow-hidden">
-              <div 
+              <div
                 className="absolute inset-0 bg-cover bg-center"
                 style={{
-                  backgroundImage: "url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80')",
+                  backgroundImage: "url('/images/menu/SaborRestaurantAndBakery_PolloGizado.jpg')",
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -300,7 +300,7 @@ export default function Home() {
             <div>
               <h4 className="font-bold text-lg mb-4 text-amber-400">Contact</h4>
               <ul className="space-y-3 text-gray-400">
-                <li>(347) 368-4407</li>
+                <li>(646) 915-6122</li>
                 <li>4 Locations</li>
                 <li>Queens, College Point, JFK & Brooklyn</li>
               </ul>

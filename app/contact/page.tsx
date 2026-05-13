@@ -26,17 +26,17 @@ export default function Contact() {
     },
     {
       name: 'JFK Airport',
-      address: 'Address Coming Soon',
-      city: 'Queens, NY',
+      address: 'Building 1111, JFK International',
+      city: 'Jamaica, NY 11430',
       mapEmbed: null,
-      mapsLink: null,
+      mapsLink: 'https://maps.google.com/?q=JFK+International+Airport+Terminal+1+Jamaica+NY+11430',
     },
     {
-      name: 'Brooklyn',
-      address: 'Address Coming Soon',
-      city: 'Brooklyn, NY',
+      name: 'Brooklyn — Navy Yard',
+      address: '141 Flushing Ave, Building 77',
+      city: 'Brooklyn, NY 11205',
       mapEmbed: null,
-      mapsLink: null,
+      mapsLink: 'https://maps.google.com/?q=141+Flushing+Ave+Building+77+Brooklyn+NY+11205',
     },
   ];
 
@@ -74,7 +74,7 @@ export default function Contact() {
               </Link>
             </div>
             <div className="ml-auto flex items-center gap-3">
-              <a href="tel:3473684407" className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50">
+              <a href="tel:6469156122" className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50">
                 Order Now
               </a>
               <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -167,8 +167,8 @@ export default function Contact() {
               >
                 <Phone className="w-12 h-12 text-amber-400 mb-4" />
                 <h3 className="text-2xl font-bold mb-3">Phone</h3>
-                <a href="tel:3473684407" className="text-amber-400 text-3xl hover:text-amber-300 transition block">
-                  (347) 368-4407
+                <a href="tel:6469156122" className="text-amber-400 text-3xl hover:text-amber-300 transition block">
+                  (646) 915-6122
                 </a>
                 <p className="text-gray-400 mt-2">Call us for orders or inquiries</p>
               </div>
@@ -231,7 +231,7 @@ export default function Contact() {
                     </div>
                     <h3 className="text-2xl font-bold mb-3 text-amber-400">Coming Soon!</h3>
                     <p className="text-gray-300 mb-6">Our {locations[selectedLocation].name} location is opening soon.</p>
-                    <a href="tel:3473684407" className="inline-block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition-all">
+                    <a href="tel:6469156122" className="inline-block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition-all">
                       Call for Updates
                     </a>
                   </div>
@@ -316,7 +316,7 @@ export default function Contact() {
             <div>
               <h4 className="font-bold text-lg mb-4 text-amber-400">Contact</h4>
               <ul className="space-y-3 text-gray-400">
-                <li>(347) 368-4407</li>
+                <li>(646) 915-6122</li>
                 <li>4 Locations</li>
                 <li>Queens, College Point, JFK & Brooklyn</li>
               </ul>

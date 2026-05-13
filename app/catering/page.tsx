@@ -42,7 +42,7 @@ export default function Catering() {
               </Link>
             </div>
             <div className="ml-auto flex items-center gap-3">
-              <a href="tel:3473684407" className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50">
+              <a href="tel:6469156122" className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50">
                 Order Now
               </a>
               <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -175,11 +175,11 @@ export default function Catering() {
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
               <a 
-                href="tel:3473684407"
+                href="tel:6469156122"
                 className="group bg-gradient-to-r from-amber-500 to-orange-600 text-white px-10 py-5 rounded-full text-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50 flex items-center justify-center gap-3"
               >
                 <Phone className="group-hover:rotate-12 transition-transform" />
-                Call (347) 368-4407
+                Call (646) 915-6122
               </a>
               <a 
                 href="mailto:cristiana.franco1215@gmail.com"
@@ -230,7 +230,7 @@ export default function Catering() {
             <div>
               <h4 className="font-bold text-lg mb-4 text-amber-400">Contact</h4>
               <ul className="space-y-3 text-gray-400">
-                <li>(347) 368-4407</li>
+                <li>(646) 915-6122</li>
                 <li>15-20 College Point Blvd</li>
                 <li>College Point, NY 11356</li>
               </ul>

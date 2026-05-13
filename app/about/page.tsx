@@ -2,17 +2,17 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { MapPin, Phone, Instagram, Facebook, Menu as MenuIcon, X, Clock, Heart, Users, Award } from 'lucide-react';
+import { MapPin, Instagram, Facebook, Menu as MenuIcon, X, Heart, Users, Award } from 'lucide-react';
 import PotIcon from '@/PotIcon';
 
 export default function About() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const locations = [
-    { name: 'College Point', address: '15-20 College Point Blvd, NY 11356' },
-    { name: 'Queens Library', address: '89-11 Merrick Blvd, Jamaica, NY 11432' },
-    { name: 'JFK Airport', address: 'Coming Soon' },
-    { name: 'Brooklyn', address: 'Coming Soon' },
+    { name: 'College Point', address: '15-20 College Point Blvd, College Point, NY 11356', hours: '6:30 AM – 10:00 PM · Open 7 Days' },
+    { name: 'Queens Library', address: '89-11 Merrick Blvd, Jamaica, NY 11432', hours: 'Hours Coming Soon' },
+    { name: 'JFK Airport', address: 'Building 1111, JFK International, Jamaica, NY 11430', hours: 'Hours Coming Soon' },
+    { name: 'Brooklyn', address: '141 Flushing Ave, Building 77, Brooklyn, NY 11205', hours: 'Hours Coming Soon' },
   ];
 
   return (
@@ -51,7 +51,7 @@ export default function About() {
               </Link>
             </div>
             <div className="ml-auto flex items-center gap-3">
-              <a href="tel:3473684407" className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50">
+              <a href="tel:6469156122" className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50">
                 Order Now
               </a>
               <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -144,14 +144,6 @@ export default function About() {
             </div>
           </div>
 
-          {/* Hours */}
-          <div className="bg-gradient-to-br from-amber-500/10 to-orange-500/10 p-12 rounded-3xl border border-amber-500/20 mb-16">
-            <Clock className="w-16 h-16 text-amber-400 mb-6" />
-            <h3 className="text-4xl font-bold mb-6">Hours</h3>
-            <p className="text-2xl text-gray-300 mb-2">Open 7 Days a Week</p>
-            <p className="text-3xl text-amber-400 font-bold">6:30 AM - 10:00 PM</p>
-          </div>
-
           {/* All Locations */}
           <div>
             <div className="text-center mb-12">
@@ -162,12 +154,15 @@ export default function About() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {locations.map((location, index) => (
-                <div 
+                <div
                   key={index}
                   className="bg-gradient-to-br from-zinc-900 to-black p-8 rounded-3xl border border-amber-500/20 hover:border-amber-500/50 transition-all hover:scale-105"
                 >
                   <h4 className="text-2xl font-bold text-amber-400 mb-3">{location.name}</h4>
-                  <p className="text-gray-300">{location.address}</p>
+                  <p className="text-gray-400 text-sm font-semibold uppercase tracking-wide mb-1">Address</p>
+                  <p className="text-gray-300 text-sm mb-4">{location.address}</p>
+                  <p className="text-gray-400 text-sm font-semibold uppercase tracking-wide mb-1">Hours</p>
+                  <p className="text-amber-400 text-sm font-medium">{location.hours}</p>
                 </div>
               ))}
             </div>
@@ -206,9 +201,9 @@ export default function About() {
             <div>
               <h4 className="font-bold text-lg mb-4 text-amber-400">Contact</h4>
               <ul className="space-y-3 text-gray-400">
-                <li>(347) 368-4407</li>
-                <li>4 Locations</li>
-                <li>Queens, College Point, JFK & Brooklyn</li>
+                <li>(646) 915-6122</li>
+                <li>College Point · Queens Library</li>
+                <li>JFK Airport · Brooklyn</li>
               </ul>
             </div>
             <div>
