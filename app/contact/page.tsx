@@ -119,7 +119,7 @@ export default function Contact() {
         style={{
           background: `linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.35)), url('/images/menu/ContactHero.png')`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center 25%',
+          backgroundPosition: 'center 45%',
         }}
       >
         <div className="relative z-10 text-center px-4">
