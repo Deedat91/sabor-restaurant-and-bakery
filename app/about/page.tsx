@@ -84,7 +84,7 @@ export default function About() {
         style={{
           background: `linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.4)), url('/images/menu/AboutHero.png')`,
           backgroundSize: 'cover',
-          backgroundPosition: 'top center',
+          backgroundPosition: 'center 30%',
         }}
       >
         <div className="relative z-10 text-center px-4">

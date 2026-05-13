@@ -75,7 +75,7 @@ export default function Catering() {
         style={{
           background: `linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.45)), url('/images/menu/CateringHero.jpg')`,
           backgroundSize: 'cover',
-          backgroundPosition: 'top center',
+          backgroundPosition: 'center 20%',
         }}
       >
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
