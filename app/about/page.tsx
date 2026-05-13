@@ -79,30 +79,19 @@ export default function About() {
       </nav>
 
       {/* Hero Section */}
-      <style>{`
-        @keyframes heroFadeUp {
-          from { opacity: 0; transform: translateY(18px); }
-          to   { opacity: 1; transform: translateY(0);    }
-        }
-        .hero-fade-up { animation: heroFadeUp 0.85s ease-out both; }
-        .hero-fade-up-delay { animation: heroFadeUp 0.85s ease-out 0.2s both; }
-      `}</style>
-
       <section
         className="relative h-[60vh] flex items-center justify-center overflow-hidden mt-20"
         style={{
           background: `linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.3)), url('/images/menu/AboutHero.png')`,
           backgroundSize: 'cover',
-          backgroundPosition: 'top left',
+          backgroundPosition: 'top center',
         }}
       >
         <div className="relative z-10 text-center px-4">
-          <div className="bg-black/50 backdrop-blur-sm rounded-2xl px-8 py-6 inline-block">
-            <h1 className="hero-fade-up text-6xl md:text-7xl font-black bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent mb-4">
-              Our Story
-            </h1>
-            <p className="hero-fade-up-delay text-xl md:text-2xl text-white/95">Tradition, Passion & Authentic Flavors</p>
-          </div>
+          <h1 className="text-6xl md:text-7xl font-black bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent mb-6">
+            Our Story
+          </h1>
+          <p className="text-2xl text-white/90">Tradition, Passion & Authentic Flavors</p>
         </div>
       </section>
 
