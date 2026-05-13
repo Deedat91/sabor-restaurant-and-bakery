@@ -203,9 +203,9 @@ export default function Home() {
                       { name: 'JFK Airport', hours: '7:30 AM – 3:00 PM · M–F' },
                       { name: 'Brooklyn', hours: '11:00 AM – 3:00 PM · M–F' },
                     ].map((loc) => (
-                      <div key={loc.name} className="flex justify-between items-center border-b border-amber-500/10 pb-2 last:border-0 last:pb-0">
+                      <div key={loc.name} className="flex flex-col xs:flex-row justify-between items-start xs:items-center border-b border-amber-500/10 pb-2 last:border-0 last:pb-0 gap-0.5">
                         <span className="text-gray-300 text-sm font-medium">{loc.name}</span>
-                        <span className="text-amber-400 text-sm text-right">{loc.hours}</span>
+                        <span className="text-amber-400 text-xs xs:text-sm">{loc.hours}</span>
                       </div>
                     ))}
                   </div>

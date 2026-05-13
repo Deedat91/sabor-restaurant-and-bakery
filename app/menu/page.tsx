@@ -8,7 +8,7 @@ import PotIcon from '@/PotIcon';
 type MenuItem    = { es: string; en?: string; price: string };
 type MenuSection = { es: string; en: string; emoji: string; note?: string; noteEn?: string; items: MenuItem[] };
 type DeliItem    = { en: string; es: string; price: string };
-type DeliSection = { en: string; es: string; emoji: string; items: DeliItem[] };
+type DeliSection = { en: string; es: string; emoji: string; note?: string; noteEn?: string; items: DeliItem[] };
 
 /* ─── Restaurant: College Point ─────────────────────────────── */
 const restaurantMenu: MenuSection[] = [
@@ -306,8 +306,8 @@ const restaurantMenu: MenuSection[] = [
   {
     es: 'Combos', en: 'Combos', emoji: '🎉',
     items: [
-      { es: 'Combo #2', en: '1 Rotisserie Chicken, Large Rice, Large Beans, Choice of Fries or Yuca Fries, 2-Liter Soda',                                             price: '$32.00' },
-      { es: 'Combo #3', en: '2 Rotisserie Chickens, Large Rice, Large Beans, Salad, Choice of Plantains/Fries/Yuca, Tres Leches or Tiramisu, 2-Liter Soda',           price: '$50.00' },
+      { es: 'Combo #2 — 1 Pollo a la Brasa, Arroz Grande, Frijoles, Papas Fritas o Yuca Frita, Soda de 2 Litros', en: 'Combo #2 — 1 Rotisserie Chicken, Large Rice, Large Beans, Choice of Fries or Yuca Fries, 2-Liter Soda',                                            price: '$32.00' },
+      { es: 'Combo #3 — 2 Pollos a la Brasa, Arroz Grande, Frijoles, Ensalada, Tostones/Papas/Yuca, Tres Leches o Tiramisú, Soda de 2 Litros',                       en: 'Combo #3 — 2 Rotisserie Chickens, Large Rice, Large Beans, Salad, Choice of Plantains/Fries/Yuca, Tres Leches or Tiramisu, 2-Liter Soda',          price: '$50.00' },
     ],
   },
 ];
@@ -316,9 +316,11 @@ const restaurantMenu: MenuSection[] = [
 const deliMenu: DeliSection[] = [
   {
     en: 'Combos', es: 'Combos', emoji: '🍱',
+    noteEn: 'Rice, Beans, Sweet Plantains, Veggies & Meat of the Day',
+    note: 'Arroz, Frijoles, Maduros, Vegetales y Carne del Día',
     items: [
-      { en: 'Combo 1', es: 'Combo 1', price: '$12.00' },
-      { en: 'Combo 2', es: 'Combo 2', price: '$15.00' },
+      { en: 'Combo 1 — Medium', es: 'Combo 1 — Mediano', price: '$12.00' },
+      { en: 'Combo 2 — Large',  es: 'Combo 2 — Grande',  price: '$15.00' },
     ],
   },
   {
@@ -454,7 +456,7 @@ export default function MenuPage() {
       <section
         className="relative h-[45vh] flex items-center justify-center overflow-hidden mt-20"
         style={{
-          background: `linear-gradient(to bottom, rgba(0,0,0,0.62), rgba(0,0,0,0.58)), url('/images/menu/SaborRestaurantAndBakery_Hero.jpg')`,
+          background: `linear-gradient(to bottom, rgba(0,0,0,0.62), rgba(0,0,0,0.58)), url('/images/menu/MenuHero.jpg')`,
           backgroundSize: 'cover', backgroundPosition: 'center',
         }}
       >
@@ -588,9 +590,16 @@ export default function MenuPage() {
                 <div key={section.en} className="bg-zinc-900/40 rounded-2xl border border-zinc-800/60 overflow-hidden">
                   <div className="px-5 py-4 border-b border-zinc-800/60 flex items-center gap-2.5 bg-zinc-900/80">
                     <span className="text-xl">{section.emoji}</span>
-                    <h3 className="font-black text-white text-sm leading-tight">
-                      {lang === 'en' ? section.en : section.es}
-                    </h3>
+                    <div>
+                      <h3 className="font-black text-white text-sm leading-tight">
+                        {lang === 'en' ? section.en : section.es}
+                      </h3>
+                      {(lang === 'en' ? section.noteEn : section.note) && (
+                        <p className="text-amber-400/80 text-xs mt-0.5">
+                          {lang === 'en' ? section.noteEn : section.note}
+                        </p>
+                      )}
+                    </div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2">
                     {section.items.map((item, i) => (

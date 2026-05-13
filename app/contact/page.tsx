@@ -117,7 +117,7 @@ export default function Contact() {
       <section 
         className="relative h-[50vh] flex items-center justify-center overflow-hidden mt-20"
         style={{
-          background: `linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&q=80')`,
+          background: `linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('/images/menu/ContactHero.png')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -240,19 +240,23 @@ export default function Contact() {
       <section className="py-20 bg-black">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <h2 className="text-4xl md:text-5xl font-black text-center mb-10 md:mb-16 bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
-            All Locations
+            Our Locations & Hours at a Glance
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {locations.map((location, index) => (
               <button
                 key={index}
                 onClick={() => setSelectedLocation(index)}
-                className="bg-gradient-to-br from-zinc-900 to-black p-8 rounded-3xl border border-zinc-800 hover:border-amber-500/50 transition-all hover:scale-105 text-left"
+                className="bg-gradient-to-br from-zinc-900 to-black p-6 rounded-3xl border border-zinc-800 hover:border-amber-500/50 transition-all hover:scale-105 text-left"
               >
-                <MapPin className="w-12 h-12 text-amber-400 mb-4" />
-                <h3 className="text-2xl font-bold mb-3">{location.name}</h3>
-                <p className="text-gray-400 mb-2">{location.address}</p>
-                <p className="text-gray-300">{location.city}</p>
+                <MapPin className="w-10 h-10 text-amber-400 mb-3" />
+                <h3 className="text-xl font-bold mb-2">{location.name}</h3>
+                <p className="text-gray-400 text-sm mb-1">{location.address}</p>
+                <p className="text-gray-300 text-sm mb-3">{location.city}</p>
+                <div className="border-t border-zinc-700 pt-3 space-y-1">
+                  <p className="text-amber-400 text-sm font-semibold">{location.hours}</p>
+                  <a href={`tel:${location.tel}`} className="text-gray-400 text-sm hover:text-white transition" onClick={(e) => e.stopPropagation()}>{location.phone}</a>
+                </div>
               </button>
             ))}
           </div>

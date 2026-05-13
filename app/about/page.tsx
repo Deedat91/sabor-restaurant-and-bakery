@@ -82,7 +82,7 @@ export default function About() {
       <section 
         className="relative h-[60vh] flex items-center justify-center overflow-hidden mt-20"
         style={{
-          background: `linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('/images/menu/SaborRestaurantAndBakery_Hero.jpg')`,
+          background: `linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('/images/menu/AboutHero.png')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}

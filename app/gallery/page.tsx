@@ -22,6 +22,7 @@ const photos = [
   { src: '/images/menu/SaborRestaurantAndBakery_Salchipapa.jpg',   label: 'Salchipapa' },
   { src: '/images/menu/SaborRestaurantAndBakery_Fan.jpg',          label: 'Sabor' },
   { src: '/images/menu/SaborRestaurantAndBakery_Hero.jpg',         label: 'Sabor Kitchen' },
+  { src: '/images/menu/Desayuno1.jpg',                             label: 'Desayuno' },
 ];
 
 export default function Gallery() {
@@ -82,26 +83,23 @@ export default function Gallery() {
         </div>
       </section>
 
-      {/* Masonry Grid */}
+      {/* Uniform Grid */}
       <section className="py-16 bg-black">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="columns-2 md:columns-3 lg:columns-4 gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
             {photos.map((photo, i) => (
               <div
                 key={i}
-                className="break-inside-avoid mb-3 relative group cursor-zoom-in rounded-xl overflow-hidden"
+                className="relative aspect-square group cursor-zoom-in rounded-xl overflow-hidden"
                 onClick={() => setLightbox(i)}
               >
-                <div className="relative w-full">
-                  <Image
-                    src={photo.src}
-                    alt={photo.label}
-                    width={600}
-                    height={400}
-                    className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  />
-                </div>
+                <Image
+                  src={photo.src}
+                  alt={photo.label}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
                   <p className="text-white font-semibold text-sm">{photo.label}</p>
                 </div>
