@@ -117,9 +117,9 @@ export default function Contact() {
       <section 
         className="relative h-[50vh] flex items-center justify-center overflow-hidden mt-20"
         style={{
-          background: `linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('/images/menu/ContactHero.png')`,
+          background: `linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.35)), url('/images/menu/ContactHero.png')`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundPosition: 'top center',
         }}
       >
         <div className="relative z-10 text-center px-4">

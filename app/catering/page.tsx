@@ -73,9 +73,9 @@ export default function Catering() {
       <section 
         className="relative h-[70vh] flex items-center justify-center overflow-hidden mt-20"
         style={{
-          background: `linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('/images/menu/CateringHero.jpg')`,
+          background: `linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.45)), url('/images/menu/CateringHero.jpg')`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundPosition: 'top center',
         }}
       >
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
