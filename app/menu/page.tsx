@@ -458,7 +458,7 @@ export default function MenuPage() {
 
       {/* ── Hero ── */}
       <section
-        className="relative h-[45vh] flex items-center justify-center overflow-hidden mt-20"
+        className="relative h-[55vh] flex items-center justify-center overflow-hidden mt-20"
         style={{
           background: `linear-gradient(to bottom, rgba(0,0,0,0.62), rgba(0,0,0,0.58)), url('/images/menu/MenuHero.jpg')`,
           backgroundSize: 'cover', backgroundPosition: 'center',
@@ -469,7 +469,6 @@ export default function MenuPage() {
           <h1 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
             Our Menu
           </h1>
-          <p className="text-white/70 text-lg">Authentic Dominican & Colombian cuisine</p>
 
           {/* ── EN / ES language toggle ── */}
           <div className="flex items-center gap-3 bg-black/50 backdrop-blur-sm border border-white/10 rounded-full px-5 py-2.5">

@@ -80,7 +80,7 @@ export default function About() {
 
       {/* Hero Section */}
       <section
-        className="relative h-[60vh] flex items-center justify-center overflow-hidden mt-20"
+        className="relative h-[55vh] flex items-center justify-center overflow-hidden mt-20"
         style={{
           background: `linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(0,0,0,0.55)), url('/images/menu/AboutHero.png')`,
           backgroundSize: 'cover',
@@ -92,7 +92,6 @@ export default function About() {
           <h1 className="text-6xl md:text-7xl font-black bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent mb-6">
             Our Story
           </h1>
-          <p className="text-2xl text-white/90">Tradition, Passion & Authentic Flavors</p>
         </div>
       </section>
 

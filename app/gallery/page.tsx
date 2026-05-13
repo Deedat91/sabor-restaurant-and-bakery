@@ -72,14 +72,13 @@ export default function Gallery() {
       </nav>
 
       {/* Hero */}
-      <section className="relative h-[40vh] flex items-center justify-center mt-20 overflow-hidden bg-zinc-950">
+      <section className="relative h-[55vh] flex items-center justify-center mt-20 overflow-hidden bg-zinc-950">
         <div className="absolute inset-0 opacity-30" style={{ background: 'radial-gradient(ellipse at center, #f59e0b 0%, transparent 70%)' }} />
         <div className="relative z-10 text-center px-4">
-          <Images className="w-14 h-14 mx-auto mb-4 text-amber-400" />
-          <h1 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent mb-4">
+          <Images className="w-14 h-14 mx-auto mb-4 text-amber-400 animate-pulse" />
+          <h1 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
             Gallery
           </h1>
-          <p className="text-gray-300 text-xl">Our food, captured fresh</p>
         </div>
       </section>
 

@@ -71,7 +71,7 @@ export default function Catering() {
 
       {/* Hero Section */}
       <section 
-        className="relative h-[70vh] flex items-center justify-center overflow-hidden mt-20"
+        className="relative h-[55vh] flex items-center justify-center overflow-hidden mt-20"
         style={{
           background: `linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.45)), url('/images/menu/CateringHero.jpg')`,
           backgroundSize: 'cover',
@@ -83,12 +83,6 @@ export default function Catering() {
           <h1 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent mb-6">
             Catering Services
           </h1>
-          <p className="text-2xl md:text-3xl text-white/90 mb-8">
-            Make Your Event Unforgettable
-          </p>
-          <p className="text-xl text-gray-300">
-            From intimate gatherings to large corporate events, we bring authentic flavors to your celebration
-          </p>
         </div>
       </section>
 
