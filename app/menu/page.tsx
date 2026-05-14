@@ -454,6 +454,7 @@ export default function MenuPage() {
                 className={`text-lg transition ${href === '/menu' ? 'text-amber-400' : 'hover:text-amber-400'}`}
                 onClick={() => setIsNavOpen(false)}>{label}</Link>
             ))}
+            <button onClick={() => { setIsNavOpen(false); setOrderOpen(true); }} className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full text-center font-semibold">Order Now</button>
           </div>
         </div>
       </nav>

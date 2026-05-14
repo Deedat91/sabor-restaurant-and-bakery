@@ -69,6 +69,7 @@ export default function Gallery() {
             {[['/', 'Home'], ['/about', 'About'], ['/menu', 'Menu'], ['/catering', 'Catering'], ['/gallery', 'Gallery'], ['/contact', 'Contact']].map(([href, label]) => (
               <Link key={href} href={href} className={`text-lg transition ${href === '/gallery' ? 'text-amber-400' : 'hover:text-amber-400'}`} onClick={() => setIsMenuOpen(false)}>{label}</Link>
             ))}
+            <button onClick={() => { setIsMenuOpen(false); setOrderOpen(true); }} className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full text-center font-semibold">Order Now</button>
           </div>
         </div>
       </nav>

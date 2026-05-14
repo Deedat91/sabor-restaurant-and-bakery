@@ -111,6 +111,7 @@ export default function Contact() {
             <Link href="/catering" className="text-lg hover:text-amber-400 transition" onClick={() => setIsMenuOpen(false)}>Catering</Link>
             <Link href="/gallery" className="text-lg hover:text-amber-400 transition" onClick={() => setIsMenuOpen(false)}>Gallery</Link>
             <Link href="/contact" className="text-lg text-amber-400" onClick={() => setIsMenuOpen(false)}>Contact</Link>
+            <button onClick={() => { setIsMenuOpen(false); setOrderOpen(true); }} className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full text-center font-semibold">Order Now</button>
           </div>
         </div>
       </nav>
