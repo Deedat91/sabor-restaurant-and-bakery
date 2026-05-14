@@ -4,9 +4,11 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Instagram, Facebook, Menu as MenuIcon, X, UtensilsCrossed, Clock, Sparkles, Users, Award, Phone, Mail } from 'lucide-react';
 import PotIcon from '@/PotIcon';
+import OrderModal from '@/components/OrderModal';
 
 export default function Catering() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [orderOpen, setOrderOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
@@ -42,9 +44,9 @@ export default function Catering() {
               </Link>
             </div>
             <div className="ml-auto flex items-center gap-3">
-              <a href="tel:3473684407" className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50">
+              <button onClick={() => setOrderOpen(true)} className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50">
                 Order Now
-              </a>
+              </button>
               <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                 {isMenuOpen ? <X size={28} /> : <MenuIcon size={28} />}
               </button>
@@ -65,17 +67,18 @@ export default function Catering() {
             <Link href="/catering" className="text-lg text-amber-400" onClick={() => setIsMenuOpen(false)}>Catering</Link>
             <Link href="/gallery" className="text-lg hover:text-amber-400 transition" onClick={() => setIsMenuOpen(false)}>Gallery</Link>
             <Link href="/contact" className="text-lg hover:text-amber-400 transition" onClick={() => setIsMenuOpen(false)}>Contact</Link>
+            <button onClick={() => { setIsMenuOpen(false); setOrderOpen(true); }} className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full text-center font-semibold">Order Now</button>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
       <section 
-        className="relative h-[70vh] flex items-center justify-center overflow-hidden mt-20"
+        className="relative h-[55vh] flex items-center justify-center overflow-hidden mt-20"
         style={{
-          background: `linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1555244162-803834f70033?w=1600&q=80')`,
+          background: `linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.45)), url('/images/menu/CateringHero.jpg')`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundPosition: 'center 20%',
         }}
       >
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
@@ -83,12 +86,6 @@ export default function Catering() {
           <h1 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent mb-6">
             Catering Services
           </h1>
-          <p className="text-2xl md:text-3xl text-white/90 mb-8">
-            Make Your Event Unforgettable
-          </p>
-          <p className="text-xl text-gray-300">
-            From intimate gatherings to large corporate events, we bring authentic flavors to your celebration
-          </p>
         </div>
       </section>
 
@@ -175,11 +172,11 @@ export default function Catering() {
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
               <a 
-                href="tel:3473684407"
+                href="tel:6469156122"
                 className="group bg-gradient-to-r from-amber-500 to-orange-600 text-white px-10 py-5 rounded-full text-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50 flex items-center justify-center gap-3"
               >
                 <Phone className="group-hover:rotate-12 transition-transform" />
-                Call (347) 368-4407
+                Call (646) 915-6122
               </a>
               <a 
                 href="mailto:cristiana.franco1215@gmail.com"
@@ -230,7 +227,7 @@ export default function Catering() {
             <div>
               <h4 className="font-bold text-lg mb-4 text-amber-400">Contact</h4>
               <ul className="space-y-3 text-gray-400">
-                <li>(347) 368-4407</li>
+                <li>(646) 915-6122</li>
                 <li>15-20 College Point Blvd</li>
                 <li>College Point, NY 11356</li>
               </ul>
@@ -244,6 +241,9 @@ export default function Catering() {
                 <a href="https://facebook.com/saborrestaurantbakery" target="_blank" className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all">
                   <Facebook size={20} />
                 </a>
+                <a href="https://tiktok.com/@saborrestaurantbakery" target="_blank" className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all">
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.79a4.85 4.85 0 0 1-1.01-.1z"/></svg>
+                </a>
               </div>
             </div>
           </div>
@@ -253,6 +253,7 @@ export default function Catering() {
           </div>
         </div>
       </footer>
+      <OrderModal isOpen={orderOpen} onClose={() => setOrderOpen(false)} />
     </div>
   );
 }

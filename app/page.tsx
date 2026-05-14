@@ -4,10 +4,12 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { MapPin, Phone, Instagram, Facebook, ChevronDown, Menu as MenuIcon, X, Clock, UtensilsCrossed, Sparkles } from 'lucide-react';
 import PotIcon from '@/PotIcon';
+import OrderModal from '@/components/OrderModal';
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [orderOpen, setOrderOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,12 +63,12 @@ export default function Home() {
             </div>
 
             <div className="ml-auto flex items-center gap-3">
-              <a
-                href="tel:3473684407"
+              <button
+                onClick={() => setOrderOpen(true)}
                 className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50"
               >
                 Order Now
-              </a>
+              </button>
               <button
               className="md:hidden text-white"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -90,12 +92,12 @@ export default function Home() {
             <Link href="/catering" className="text-lg hover:text-amber-400 transition" onClick={() => setIsMenuOpen(false)}>Catering</Link>
             <Link href="/gallery" className="text-lg hover:text-amber-400 transition" onClick={() => setIsMenuOpen(false)}>Gallery</Link>
             <Link href="/contact" className="text-lg hover:text-amber-400 transition" onClick={() => setIsMenuOpen(false)}>Contact</Link>
-            <a 
-              href="tel:3473684407"
+            <button
+              onClick={() => { setIsMenuOpen(false); setOrderOpen(true); }}
               className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full text-center"
             >
               Order Now
-            </a>
+            </button>
           </div>
         </div>
       </nav>
@@ -105,7 +107,7 @@ export default function Home() {
         id="home"
         className="relative h-screen flex items-center justify-center overflow-hidden"
         style={{
-          background: `linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1600&q=80')`,
+          background: `linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.35)), url('/images/menu/SaborRestaurantAndBakery_Hero.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -150,10 +152,10 @@ export default function Home() {
                 </span>
               </Link>
               <a 
-                href="tel:3473684407"
+                href="tel:6469156122"
                 className="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white px-10 py-5 rounded-full text-xl font-semibold hover:bg-white/20 transition-all duration-300"
               >
-                (347) 368-4407
+                (646) 915-6122
               </a>
             </div>
           </div>
@@ -190,18 +192,25 @@ export default function Home() {
                 We also offer catering for all occasions. Visit us today and experience the taste of Dominican Republic and Colombia.
               </p>
               
-              <div className="grid grid-cols-2 gap-6 pt-8">
-                <div className="bg-gradient-to-br from-amber-500/10 to-orange-500/10 p-6 rounded-2xl border border-amber-500/20 hover:scale-105 transition-transform">
-                  <Clock className="w-10 h-10 text-amber-400 mb-3" />
-                  <h3 className="font-bold text-xl mb-2">Hours</h3>
-                  <p className="text-gray-400">Open 7 Days</p>
-                  <p className="text-amber-400">6:30 AM - 10:00 PM</p>
-                </div>
-                <div className="bg-gradient-to-br from-amber-500/10 to-orange-500/10 p-6 rounded-2xl border border-amber-500/20 hover:scale-105 transition-transform">
-                  <MapPin className="w-10 h-10 text-amber-400 mb-3" />
-                  <h3 className="font-bold text-xl mb-2">Locations</h3>
-                  <p className="text-gray-400 text-sm">Queens, College Point</p>
-                  <p className="text-amber-400 text-sm">JFK & Brooklyn</p>
+              <div className="pt-8">
+                <div className="bg-gradient-to-br from-amber-500/10 to-orange-500/10 p-6 rounded-2xl border border-amber-500/20">
+                  <div className="flex items-center gap-3 mb-4">
+                    <MapPin className="w-8 h-8 text-amber-400 flex-shrink-0" />
+                    <h3 className="font-bold text-xl">Locations & Hours</h3>
+                  </div>
+                  <div className="space-y-3">
+                    {[
+                      { name: 'College Point', hours: '6:30 AM – 10:00 PM · M–F' },
+                      { name: 'Queens Library', hours: '10:00 AM – 6:30 PM · M–F' },
+                      { name: 'JFK Airport', hours: '7:30 AM – 3:00 PM · M–F' },
+                      { name: 'Brooklyn', hours: '11:00 AM – 3:00 PM · M–F' },
+                    ].map((loc) => (
+                      <div key={loc.name} className="flex flex-col xs:flex-row justify-between items-start xs:items-center border-b border-amber-500/10 pb-2 last:border-0 last:pb-0 gap-0.5">
+                        <span className="text-gray-300 text-sm font-medium">{loc.name}</span>
+                        <span className="text-amber-400 text-xs xs:text-sm">{loc.hours}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
 
@@ -212,14 +221,17 @@ export default function Home() {
                 <a href="https://facebook.com/saborrestaurantbakery" target="_blank" className="text-amber-400 hover:text-amber-300 transition-all hover:scale-110 hover:rotate-12">
                   <Facebook size={32} />
                 </a>
+                <a href="https://tiktok.com/@saborrestaurantbakery" target="_blank" className="text-amber-400 hover:text-amber-300 transition-all hover:scale-110 hover:rotate-12">
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.79a4.85 4.85 0 0 1-1.01-.1z"/></svg>
+                </a>
               </div>
             </div>
 
             <div className="relative h-64 md:h-[600px] rounded-3xl overflow-hidden">
-              <div 
+              <div
                 className="absolute inset-0 bg-cover bg-center"
                 style={{
-                  backgroundImage: "url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80')",
+                  backgroundImage: "url('/images/menu/SaborRestaurantAndBakery_PolloGizado.jpg')",
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -300,7 +312,7 @@ export default function Home() {
             <div>
               <h4 className="font-bold text-lg mb-4 text-amber-400">Contact</h4>
               <ul className="space-y-3 text-gray-400">
-                <li>(347) 368-4407</li>
+                <li>(646) 915-6122</li>
                 <li>4 Locations</li>
                 <li>Queens, College Point, JFK & Brooklyn</li>
               </ul>
@@ -315,6 +327,9 @@ export default function Home() {
                 <a href="https://facebook.com/saborrestaurantbakery" target="_blank" className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all">
                   <Facebook size={20} />
                 </a>
+                <a href="https://tiktok.com/@saborrestaurantbakery" target="_blank" className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all">
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.79a4.85 4.85 0 0 1-1.01-.1z"/></svg>
+                </a>
               </div>
             </div>
           </div>
@@ -325,6 +340,7 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      <OrderModal isOpen={orderOpen} onClose={() => setOrderOpen(false)} />
     </div>
   );
 }

@@ -4,9 +4,11 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { MapPin, Phone, Mail, Instagram, Facebook, Menu as MenuIcon, X, Clock } from 'lucide-react';
 import PotIcon from '@/PotIcon';
+import OrderModal from '@/components/OrderModal';
 
 export default function Contact() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [orderOpen, setOrderOpen] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState(0);
 
   const locations = [
@@ -14,6 +16,9 @@ export default function Contact() {
       name: 'College Point',
       address: '15-20 College Point Blvd',
       city: 'College Point, NY 11356',
+      phone: '(347) 368-4407',
+      tel: '3473684407',
+      hours: '6:30 AM – 10:00 PM · M–F',
       mapEmbed: 'https://www.openstreetmap.org/export/embed.html?bbox=-73.850%2C40.782%2C-73.826%2C40.796&layer=mapnik&marker=40.7885%2C-73.8378',
       mapsLink: 'https://maps.google.com/?q=15-20+College+Point+Blvd+College+Point+NY+11356',
     },
@@ -21,22 +26,31 @@ export default function Contact() {
       name: 'Queens Public Library',
       address: '89-11 Merrick Blvd',
       city: 'Jamaica, NY 11432',
+      phone: '(718) 480-4304',
+      tel: '7184804304',
+      hours: '10:00 AM – 6:30 PM · M–F',
       mapEmbed: 'https://www.openstreetmap.org/export/embed.html?bbox=-73.808%2C40.694%2C-73.784%2C40.708&layer=mapnik&marker=40.7002%2C-73.7958',
       mapsLink: 'https://maps.google.com/?q=89-11+Merrick+Blvd+Jamaica+NY+11432',
     },
     {
       name: 'JFK Airport',
-      address: 'Address Coming Soon',
-      city: 'Queens, NY',
-      mapEmbed: null,
-      mapsLink: null,
+      address: 'Building 1111, JFK International',
+      city: 'Jamaica, NY 11430',
+      phone: '(646) 915-6122',
+      tel: '6469156122',
+      hours: '7:30 AM – 3:00 PM · M–F',
+      mapEmbed: 'https://www.openstreetmap.org/export/embed.html?bbox=-73.810%2C40.622%2C-73.747%2C40.660&layer=mapnik&marker=40.6413%2C-73.7781',
+      mapsLink: 'https://maps.google.com/?q=JFK+International+Airport+Building+1111+Jamaica+NY+11430',
     },
     {
-      name: 'Brooklyn',
-      address: 'Address Coming Soon',
-      city: 'Brooklyn, NY',
-      mapEmbed: null,
-      mapsLink: null,
+      name: 'Brooklyn — Navy Yard',
+      address: '141 Flushing Ave, Building 77',
+      city: 'Brooklyn, NY 11205',
+      phone: '(646) 915-6122',
+      tel: '6469156122',
+      hours: '11:00 AM – 3:00 PM · M–F',
+      mapEmbed: 'https://www.openstreetmap.org/export/embed.html?bbox=-73.990%2C40.689%2C-73.959%2C40.707&layer=mapnik&marker=40.6970%2C-73.9737',
+      mapsLink: 'https://maps.google.com/?q=141+Flushing+Ave+Building+77+Brooklyn+NY+11205',
     },
   ];
 
@@ -74,9 +88,9 @@ export default function Contact() {
               </Link>
             </div>
             <div className="ml-auto flex items-center gap-3">
-              <a href="tel:3473684407" className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50">
+              <button onClick={() => setOrderOpen(true)} className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50">
                 Order Now
-              </a>
+              </button>
               <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                 {isMenuOpen ? <X size={28} /> : <MenuIcon size={28} />}
               </button>
@@ -97,24 +111,25 @@ export default function Contact() {
             <Link href="/catering" className="text-lg hover:text-amber-400 transition" onClick={() => setIsMenuOpen(false)}>Catering</Link>
             <Link href="/gallery" className="text-lg hover:text-amber-400 transition" onClick={() => setIsMenuOpen(false)}>Gallery</Link>
             <Link href="/contact" className="text-lg text-amber-400" onClick={() => setIsMenuOpen(false)}>Contact</Link>
+            <button onClick={() => { setIsMenuOpen(false); setOrderOpen(true); }} className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full text-center font-semibold">Order Now</button>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
       <section 
-        className="relative h-[50vh] flex items-center justify-center overflow-hidden mt-20"
+        className="relative h-[55vh] flex items-center justify-center overflow-hidden mt-20"
         style={{
-          background: `linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&q=80')`,
+          background: `linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(0,0,0,0.55)), url('/images/menu/ContactHero.png')`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundPosition: 'top center',
         }}
       >
         <div className="relative z-10 text-center px-4">
+          <MapPin className="w-16 h-16 mx-auto mb-6 text-amber-400 animate-pulse" />
           <h1 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent mb-6">
             Visit Us
           </h1>
-          <p className="text-2xl text-white/90">We have 4 locations to serve you</p>
         </div>
       </section>
 
@@ -162,24 +177,23 @@ export default function Contact() {
                 )}
               </div>
 
-              <div 
+              <div
                 className="bg-gradient-to-br from-zinc-900 to-black p-8 rounded-3xl border border-zinc-800 hover:border-amber-500/50 transition-all"
               >
                 <Phone className="w-12 h-12 text-amber-400 mb-4" />
                 <h3 className="text-2xl font-bold mb-3">Phone</h3>
-                <a href="tel:3473684407" className="text-amber-400 text-3xl hover:text-amber-300 transition block">
-                  (347) 368-4407
+                <a href={`tel:${locations[selectedLocation].tel}`} className="text-amber-400 text-3xl hover:text-amber-300 transition block">
+                  {locations[selectedLocation].phone}
                 </a>
                 <p className="text-gray-400 mt-2">Call us for orders or inquiries</p>
               </div>
 
-              <div 
+              <div
                 className="bg-gradient-to-br from-zinc-900 to-black p-8 rounded-3xl border border-zinc-800 hover:border-amber-500/50 transition-all"
               >
                 <Clock className="w-12 h-12 text-amber-400 mb-4" />
                 <h3 className="text-2xl font-bold mb-3">Hours</h3>
-                <p className="text-gray-300 text-lg mb-2">Open 7 Days a Week</p>
-                <p className="text-amber-400 text-2xl font-semibold">6:30 AM - 10:00 PM</p>
+                <p className="text-amber-400 text-2xl font-semibold">{locations[selectedLocation].hours}</p>
               </div>
 
               <div 
@@ -196,47 +210,30 @@ export default function Contact() {
 
             {/* Map */}
             <div className="w-full rounded-3xl overflow-hidden border border-zinc-800 flex flex-col">
-              {locations[selectedLocation].mapEmbed ? (
-                <>
-                  <iframe
-                    key={selectedLocation}
-                    src={locations[selectedLocation].mapEmbed}
-                    width="100%"
-                    className="flex-1 min-h-[260px]"
-                    style={{ border: 0, display: 'block' }}
-                    allowFullScreen
-                    loading="lazy"
-                    title={`Map for ${locations[selectedLocation].name}`}
-                  />
-                  <div className="bg-zinc-900 px-6 py-4 flex items-center justify-between gap-4 flex-wrap">
-                    <div>
-                      <p className="font-bold text-white">{locations[selectedLocation].name}</p>
-                      <p className="text-gray-400 text-sm">{locations[selectedLocation].address}, {locations[selectedLocation].city}</p>
-                    </div>
-                    <a
-                      href={locations[selectedLocation].mapsLink!}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:scale-105 transition-all shrink-0"
-                    >
-                      <MapPin size={16} /> Get Directions
-                    </a>
-                  </div>
-                </>
-              ) : (
-                <div className="flex flex-1 items-center justify-center bg-zinc-900 min-h-[300px]">
-                  <div className="text-center p-8">
-                    <div className="w-20 h-20 bg-zinc-800 rounded-full flex items-center justify-center mx-auto mb-6 border border-zinc-700">
-                      <MapPin size={40} className="text-amber-400/50" />
-                    </div>
-                    <h3 className="text-2xl font-bold mb-3 text-amber-400">Coming Soon!</h3>
-                    <p className="text-gray-300 mb-6">Our {locations[selectedLocation].name} location is opening soon.</p>
-                    <a href="tel:3473684407" className="inline-block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition-all">
-                      Call for Updates
-                    </a>
-                  </div>
+              <iframe
+                key={selectedLocation}
+                src={locations[selectedLocation].mapEmbed}
+                width="100%"
+                className="flex-1 min-h-[260px]"
+                style={{ border: 0, display: 'block' }}
+                allowFullScreen
+                loading="lazy"
+                title={`Map for ${locations[selectedLocation].name}`}
+              />
+              <div className="bg-zinc-900 px-6 py-4 flex items-center justify-between gap-4 flex-wrap">
+                <div>
+                  <p className="font-bold text-white">{locations[selectedLocation].name}</p>
+                  <p className="text-gray-400 text-sm">{locations[selectedLocation].address}, {locations[selectedLocation].city}</p>
                 </div>
-              )}
+                <a
+                  href={locations[selectedLocation].mapsLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:scale-105 transition-all shrink-0"
+                >
+                  <MapPin size={16} /> Get Directions
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -246,19 +243,23 @@ export default function Contact() {
       <section className="py-20 bg-black">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <h2 className="text-4xl md:text-5xl font-black text-center mb-10 md:mb-16 bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
-            All Locations
+            Our Locations & Hours at a Glance
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {locations.map((location, index) => (
               <button
                 key={index}
                 onClick={() => setSelectedLocation(index)}
-                className="bg-gradient-to-br from-zinc-900 to-black p-8 rounded-3xl border border-zinc-800 hover:border-amber-500/50 transition-all hover:scale-105 text-left"
+                className="bg-gradient-to-br from-zinc-900 to-black p-6 rounded-3xl border border-zinc-800 hover:border-amber-500/50 transition-all hover:scale-105 text-left"
               >
-                <MapPin className="w-12 h-12 text-amber-400 mb-4" />
-                <h3 className="text-2xl font-bold mb-3">{location.name}</h3>
-                <p className="text-gray-400 mb-2">{location.address}</p>
-                <p className="text-gray-300">{location.city}</p>
+                <MapPin className="w-10 h-10 text-amber-400 mb-3" />
+                <h3 className="text-xl font-bold mb-2">{location.name}</h3>
+                <p className="text-gray-400 text-sm mb-1">{location.address}</p>
+                <p className="text-gray-300 text-sm mb-3">{location.city}</p>
+                <div className="border-t border-zinc-700 pt-3 space-y-1">
+                  <p className="text-amber-400 text-sm font-semibold">{location.hours}</p>
+                  <a href={`tel:${location.tel}`} className="text-gray-400 text-sm hover:text-white transition" onClick={(e) => e.stopPropagation()}>{location.phone}</a>
+                </div>
               </button>
             ))}
           </div>
@@ -272,19 +273,26 @@ export default function Contact() {
             <h2 className="text-4xl font-black mb-6">Follow Us</h2>
             <p className="text-xl text-gray-300 mb-8">Stay updated with our latest dishes, specials, and events</p>
             <div className="flex gap-6 justify-center mb-8">
-              <a 
-                href="https://instagram.com/saborrestaurantbakery" 
-                target="_blank" 
+              <a
+                href="https://instagram.com/saborrestaurantbakery"
+                target="_blank"
                 className="group bg-gradient-to-br from-amber-500 to-orange-600 w-20 h-20 rounded-full flex items-center justify-center hover:scale-110 transition-all shadow-lg hover:shadow-amber-500/50"
               >
                 <Instagram size={36} className="group-hover:rotate-12 transition-transform" />
               </a>
-              <a 
-                href="https://facebook.com/saborrestaurantbakery" 
-                target="_blank" 
+              <a
+                href="https://facebook.com/saborrestaurantbakery"
+                target="_blank"
                 className="group bg-gradient-to-br from-amber-500 to-orange-600 w-20 h-20 rounded-full flex items-center justify-center hover:scale-110 transition-all shadow-lg hover:shadow-amber-500/50"
               >
                 <Facebook size={36} className="group-hover:rotate-12 transition-transform" />
+              </a>
+              <a
+                href="https://tiktok.com/@saborrestaurantbakery"
+                target="_blank"
+                className="group bg-gradient-to-br from-amber-500 to-orange-600 w-20 h-20 rounded-full flex items-center justify-center hover:scale-110 transition-all shadow-lg hover:shadow-amber-500/50"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" className="w-9 h-9 group-hover:rotate-12 transition-transform"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.79a4.85 4.85 0 0 1-1.01-.1z"/></svg>
               </a>
             </div>
             <p className="text-gray-400">
@@ -316,7 +324,7 @@ export default function Contact() {
             <div>
               <h4 className="font-bold text-lg mb-4 text-amber-400">Contact</h4>
               <ul className="space-y-3 text-gray-400">
-                <li>(347) 368-4407</li>
+                <li>(646) 915-6122</li>
                 <li>4 Locations</li>
                 <li>Queens, College Point, JFK & Brooklyn</li>
               </ul>
@@ -330,6 +338,9 @@ export default function Contact() {
                 <a href="https://facebook.com/saborrestaurantbakery" target="_blank" className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all">
                   <Facebook size={20} />
                 </a>
+                <a href="https://tiktok.com/@saborrestaurantbakery" target="_blank" className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all">
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.79a4.85 4.85 0 0 1-1.01-.1z"/></svg>
+                </a>
               </div>
             </div>
           </div>
@@ -339,6 +350,7 @@ export default function Contact() {
           </div>
         </div>
       </footer>
+      <OrderModal isOpen={orderOpen} onClose={() => setOrderOpen(false)} />
     </div>
   );
 }

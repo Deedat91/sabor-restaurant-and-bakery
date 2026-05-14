@@ -3,8 +3,9 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { X, Menu as MenuIcon, Images } from 'lucide-react';
+import { X, Menu as MenuIcon, Images, Instagram, Facebook } from 'lucide-react';
 import PotIcon from '@/PotIcon';
+import OrderModal from '@/components/OrderModal';
 
 const photos = [
   { src: '/images/menu/SaborRestaurantAndBakery_PolloGizado.jpg',  label: 'Pollo Guizado' },
@@ -22,10 +23,12 @@ const photos = [
   { src: '/images/menu/SaborRestaurantAndBakery_Salchipapa.jpg',   label: 'Salchipapa' },
   { src: '/images/menu/SaborRestaurantAndBakery_Fan.jpg',          label: 'Sabor' },
   { src: '/images/menu/SaborRestaurantAndBakery_Hero.jpg',         label: 'Sabor Kitchen' },
+  { src: '/images/menu/Desayuno1.jpg',                             label: 'Desayuno' },
 ];
 
 export default function Gallery() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [orderOpen, setOrderOpen] = useState(false);
   const [lightbox, setLightbox] = useState<number | null>(null);
 
   return (
@@ -52,9 +55,9 @@ export default function Gallery() {
               </Link>
             </div>
             <div className="ml-auto flex items-center gap-3">
-              <a href="tel:3473684407" className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50">
+              <button onClick={() => setOrderOpen(true)} className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50">
                 Order Now
-              </a>
+              </button>
               <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                 {isMenuOpen ? <X size={28} /> : <MenuIcon size={28} />}
               </button>
@@ -66,42 +69,39 @@ export default function Gallery() {
             {[['/', 'Home'], ['/about', 'About'], ['/menu', 'Menu'], ['/catering', 'Catering'], ['/gallery', 'Gallery'], ['/contact', 'Contact']].map(([href, label]) => (
               <Link key={href} href={href} className={`text-lg transition ${href === '/gallery' ? 'text-amber-400' : 'hover:text-amber-400'}`} onClick={() => setIsMenuOpen(false)}>{label}</Link>
             ))}
+            <button onClick={() => { setIsMenuOpen(false); setOrderOpen(true); }} className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full text-center font-semibold">Order Now</button>
           </div>
         </div>
       </nav>
 
       {/* Hero */}
-      <section className="relative h-[40vh] flex items-center justify-center mt-20 overflow-hidden bg-zinc-950">
+      <section className="relative h-[55vh] flex items-center justify-center mt-20 overflow-hidden bg-zinc-950">
         <div className="absolute inset-0 opacity-30" style={{ background: 'radial-gradient(ellipse at center, #f59e0b 0%, transparent 70%)' }} />
         <div className="relative z-10 text-center px-4">
-          <Images className="w-14 h-14 mx-auto mb-4 text-amber-400" />
-          <h1 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent mb-4">
+          <Images className="w-14 h-14 mx-auto mb-4 text-amber-400 animate-pulse" />
+          <h1 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
             Gallery
           </h1>
-          <p className="text-gray-300 text-xl">Our food, captured fresh</p>
         </div>
       </section>
 
-      {/* Masonry Grid */}
+      {/* Uniform Grid */}
       <section className="py-16 bg-black">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="columns-2 md:columns-3 lg:columns-4 gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
             {photos.map((photo, i) => (
               <div
                 key={i}
-                className="break-inside-avoid mb-3 relative group cursor-zoom-in rounded-xl overflow-hidden"
+                className="relative aspect-square group cursor-zoom-in rounded-xl overflow-hidden"
                 onClick={() => setLightbox(i)}
               >
-                <div className="relative w-full">
-                  <Image
-                    src={photo.src}
-                    alt={photo.label}
-                    width={600}
-                    height={400}
-                    className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  />
-                </div>
+                <Image
+                  src={photo.src}
+                  alt={photo.label}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
                   <p className="text-white font-semibold text-sm">{photo.label}</p>
                 </div>
@@ -150,10 +150,54 @@ export default function Gallery() {
       )}
 
       {/* Footer */}
-      <footer className="bg-zinc-950 py-10 border-t border-zinc-900 text-center text-gray-500">
-        <p>© 2025 Sabor Restaurant & Bakery. All rights reserved.</p>
-        <p className="mt-1 text-sm">Developed by Deka Solutions</p>
+      <footer className="bg-gradient-to-b from-black to-zinc-950 py-16 border-t border-zinc-900">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid md:grid-cols-4 gap-12 mb-12">
+            <div>
+              <h3 className="text-3xl font-bold bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent mb-4">Sabor</h3>
+              <p className="text-gray-400">Authentic Dominican & Colombian cuisine in the heart of New York</p>
+            </div>
+            <div>
+              <h4 className="font-bold text-lg mb-4 text-amber-400">Quick Links</h4>
+              <ul className="space-y-3 text-gray-400">
+                <li><Link href="/" className="hover:text-white transition">Home</Link></li>
+                <li><Link href="/about" className="hover:text-white transition">About</Link></li>
+                <li><Link href="/menu" className="hover:text-white transition">Menu</Link></li>
+                <li><Link href="/catering" className="hover:text-white transition">Catering</Link></li>
+                <li><Link href="/gallery" className="hover:text-white transition">Gallery</Link></li>
+                <li><Link href="/contact" className="hover:text-white transition">Contact</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-lg mb-4 text-amber-400">Contact</h4>
+              <ul className="space-y-3 text-gray-400">
+                <li>(646) 915-6122</li>
+                <li>College Point · Queens Library</li>
+                <li>JFK Airport · Brooklyn</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-lg mb-4 text-amber-400">Follow Us</h4>
+              <div className="flex gap-4">
+                <a href="https://instagram.com/saborrestaurantbakery" target="_blank" className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all">
+                  <Instagram size={20} />
+                </a>
+                <a href="https://facebook.com/saborrestaurantbakery" target="_blank" className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all">
+                  <Facebook size={20} />
+                </a>
+                <a href="https://tiktok.com/@saborrestaurantbakery" target="_blank" className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all">
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.79a4.85 4.85 0 0 1-1.01-.1z"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-zinc-900 pt-8 text-center text-gray-500">
+            <p>© 2025 Sabor Restaurant & Bakery. All rights reserved.</p>
+            <p className="mt-2 text-sm">Developed by Deka Solutions</p>
+          </div>
+        </div>
       </footer>
+      <OrderModal isOpen={orderOpen} onClose={() => setOrderOpen(false)} />
     </div>
   );
 }
