@@ -4,10 +4,12 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { MapPin, Phone, Instagram, Facebook, ChevronDown, Menu as MenuIcon, X, Clock, UtensilsCrossed, Sparkles } from 'lucide-react';
 import PotIcon from '@/PotIcon';
+import OrderModal from '@/components/OrderModal';
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [orderOpen, setOrderOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,12 +63,12 @@ export default function Home() {
             </div>
 
             <div className="ml-auto flex items-center gap-3">
-              <a
-                href="tel:6469156122"
+              <button
+                onClick={() => setOrderOpen(true)}
                 className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50"
               >
                 Order Now
-              </a>
+              </button>
               <button
               className="md:hidden text-white"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -90,12 +92,12 @@ export default function Home() {
             <Link href="/catering" className="text-lg hover:text-amber-400 transition" onClick={() => setIsMenuOpen(false)}>Catering</Link>
             <Link href="/gallery" className="text-lg hover:text-amber-400 transition" onClick={() => setIsMenuOpen(false)}>Gallery</Link>
             <Link href="/contact" className="text-lg hover:text-amber-400 transition" onClick={() => setIsMenuOpen(false)}>Contact</Link>
-            <a 
-              href="tel:6469156122"
+            <button
+              onClick={() => { setIsMenuOpen(false); setOrderOpen(true); }}
               className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full text-center"
             >
               Order Now
-            </a>
+            </button>
           </div>
         </div>
       </nav>
@@ -338,6 +340,7 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      <OrderModal isOpen={orderOpen} onClose={() => setOrderOpen(false)} />
     </div>
   );
 }

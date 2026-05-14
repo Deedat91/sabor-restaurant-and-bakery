@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Instagram, Facebook, Menu as MenuIcon, X, MapPin, UtensilsCrossed, ShoppingBag } from 'lucide-react';
 import PotIcon from '@/PotIcon';
+import OrderModal from '@/components/OrderModal';
 
 type MenuItem    = { es: string; en?: string; price: string };
 type MenuSection = { es: string; en: string; emoji: string; note?: string; noteEn?: string; items: MenuItem[] };
@@ -415,6 +416,7 @@ const navLinks: [string, string][] = [
 
 export default function MenuPage() {
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [orderOpen, setOrderOpen] = useState(false);
   const [tab,  setTab]  = useState<'restaurant' | 'deli'>('restaurant');
   const [lang, setLang] = useState<'es' | 'en'>('es');
 
@@ -436,9 +438,9 @@ export default function MenuPage() {
               ))}
             </div>
             <div className="ml-auto flex items-center gap-3">
-              <a href="tel:6469156122" className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50">
+              <button onClick={() => setOrderOpen(true)} className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50">
                 Order Now
-              </a>
+              </button>
               <button className="md:hidden text-white" onClick={() => setIsNavOpen(!isNavOpen)}>
                 {isNavOpen ? <X size={28} /> : <MenuIcon size={28} />}
               </button>
@@ -667,6 +669,7 @@ export default function MenuPage() {
           </div>
         </div>
       </footer>
+      <OrderModal isOpen={orderOpen} onClose={() => setOrderOpen(false)} />
     </div>
   );
 }

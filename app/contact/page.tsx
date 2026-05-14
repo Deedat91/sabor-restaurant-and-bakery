@@ -4,9 +4,11 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { MapPin, Phone, Mail, Instagram, Facebook, Menu as MenuIcon, X, Clock } from 'lucide-react';
 import PotIcon from '@/PotIcon';
+import OrderModal from '@/components/OrderModal';
 
 export default function Contact() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [orderOpen, setOrderOpen] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState(0);
 
   const locations = [
@@ -86,9 +88,9 @@ export default function Contact() {
               </Link>
             </div>
             <div className="ml-auto flex items-center gap-3">
-              <a href="tel:6469156122" className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50">
+              <button onClick={() => setOrderOpen(true)} className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50">
                 Order Now
-              </a>
+              </button>
               <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                 {isMenuOpen ? <X size={28} /> : <MenuIcon size={28} />}
               </button>
@@ -347,6 +349,7 @@ export default function Contact() {
           </div>
         </div>
       </footer>
+      <OrderModal isOpen={orderOpen} onClose={() => setOrderOpen(false)} />
     </div>
   );
 }

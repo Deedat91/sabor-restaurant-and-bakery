@@ -3,8 +3,9 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { X, Menu as MenuIcon, Images } from 'lucide-react';
+import { X, Menu as MenuIcon, Images, Instagram, Facebook } from 'lucide-react';
 import PotIcon from '@/PotIcon';
+import OrderModal from '@/components/OrderModal';
 
 const photos = [
   { src: '/images/menu/SaborRestaurantAndBakery_PolloGizado.jpg',  label: 'Pollo Guizado' },
@@ -27,6 +28,7 @@ const photos = [
 
 export default function Gallery() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [orderOpen, setOrderOpen] = useState(false);
   const [lightbox, setLightbox] = useState<number | null>(null);
 
   return (
@@ -53,9 +55,9 @@ export default function Gallery() {
               </Link>
             </div>
             <div className="ml-auto flex items-center gap-3">
-              <a href="tel:3473684407" className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50">
+              <button onClick={() => setOrderOpen(true)} className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/50">
                 Order Now
-              </a>
+              </button>
               <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                 {isMenuOpen ? <X size={28} /> : <MenuIcon size={28} />}
               </button>
@@ -147,21 +149,54 @@ export default function Gallery() {
       )}
 
       {/* Footer */}
-      <footer className="bg-zinc-950 py-10 border-t border-zinc-900 text-center text-gray-500">
-        <div className="flex gap-4 justify-center mb-6">
-          <a href="https://instagram.com/saborrestaurantbakery" target="_blank" className="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all text-white">
-            <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path fill="black" d="M12 7a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
-          </a>
-          <a href="https://facebook.com/saborrestaurantbakery" target="_blank" className="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all text-white">
-            <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          </a>
-          <a href="https://tiktok.com/@saborrestaurantbakery" target="_blank" className="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all text-white">
-            <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.79a4.85 4.85 0 0 1-1.01-.1z"/></svg>
-          </a>
+      <footer className="bg-gradient-to-b from-black to-zinc-950 py-16 border-t border-zinc-900">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid md:grid-cols-4 gap-12 mb-12">
+            <div>
+              <h3 className="text-3xl font-bold bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent mb-4">Sabor</h3>
+              <p className="text-gray-400">Authentic Dominican & Colombian cuisine in the heart of New York</p>
+            </div>
+            <div>
+              <h4 className="font-bold text-lg mb-4 text-amber-400">Quick Links</h4>
+              <ul className="space-y-3 text-gray-400">
+                <li><Link href="/" className="hover:text-white transition">Home</Link></li>
+                <li><Link href="/about" className="hover:text-white transition">About</Link></li>
+                <li><Link href="/menu" className="hover:text-white transition">Menu</Link></li>
+                <li><Link href="/catering" className="hover:text-white transition">Catering</Link></li>
+                <li><Link href="/gallery" className="hover:text-white transition">Gallery</Link></li>
+                <li><Link href="/contact" className="hover:text-white transition">Contact</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-lg mb-4 text-amber-400">Contact</h4>
+              <ul className="space-y-3 text-gray-400">
+                <li>(646) 915-6122</li>
+                <li>College Point · Queens Library</li>
+                <li>JFK Airport · Brooklyn</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-lg mb-4 text-amber-400">Follow Us</h4>
+              <div className="flex gap-4">
+                <a href="https://instagram.com/saborrestaurantbakery" target="_blank" className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all">
+                  <Instagram size={20} />
+                </a>
+                <a href="https://facebook.com/saborrestaurantbakery" target="_blank" className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all">
+                  <Facebook size={20} />
+                </a>
+                <a href="https://tiktok.com/@saborrestaurantbakery" target="_blank" className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all">
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.79a4.85 4.85 0 0 1-1.01-.1z"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-zinc-900 pt-8 text-center text-gray-500">
+            <p>© 2025 Sabor Restaurant & Bakery. All rights reserved.</p>
+            <p className="mt-2 text-sm">Developed by Deka Solutions</p>
+          </div>
         </div>
-        <p>© 2025 Sabor Restaurant & Bakery. All rights reserved.</p>
-        <p className="mt-1 text-sm">Developed by Deka Solutions</p>
       </footer>
+      <OrderModal isOpen={orderOpen} onClose={() => setOrderOpen(false)} />
     </div>
   );
 }
