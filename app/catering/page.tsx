@@ -179,7 +179,7 @@ export default function Catering() {
                 Call (646) 915-6122
               </a>
               <a 
-                href="mailto:cristiana.franco1215@gmail.com"
+                href="mailto:SaborRestaurantAndBakery@gmail.com"
                 className="group bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white px-10 py-5 rounded-full text-xl font-semibold hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-3"
               >
                 <Mail className="group-hover:scale-110 transition-transform" />
@@ -235,10 +235,10 @@ export default function Catering() {
             <div>
               <h4 className="font-bold text-lg mb-4 text-amber-400">Follow Us</h4>
               <div className="flex gap-4">
-                <a href="https://instagram.com/saborrestaurantbakery" target="_blank" className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all">
+                <a href="https://www.instagram.com/saborrestaurantandbakery/" target="_blank" className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all">
                   <Instagram size={20} />
                 </a>
-                <a href="https://facebook.com/saborrestaurantbakery" target="_blank" className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all">
+                <a href="https://www.facebook.com/profile.php?id=61589917963423" target="_blank" className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all">
                   <Facebook size={20} />
                 </a>
                 <a href="https://tiktok.com/@saborrestaurantbakery" target="_blank" className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all">

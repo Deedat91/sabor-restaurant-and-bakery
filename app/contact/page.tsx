@@ -201,8 +201,8 @@ export default function Contact() {
               >
                 <Mail className="w-12 h-12 text-amber-400 mb-4" />
                 <h3 className="text-2xl font-bold mb-3">Email</h3>
-                <a href="mailto:cristiana.franco1215@gmail.com" className="text-amber-400 text-lg hover:text-amber-300 transition break-all">
-                  cristiana.franco1215@gmail.com
+                <a href="mailto:SaborRestaurantAndBakery@gmail.com" className="text-amber-400 text-lg hover:text-amber-300 transition break-all">
+                  SaborRestaurantAndBakery@gmail.com
                 </a>
                 <p className="text-gray-400 mt-2">For catering inquiries and questions</p>
               </div>
@@ -274,14 +274,14 @@ export default function Contact() {
             <p className="text-xl text-gray-300 mb-8">Stay updated with our latest dishes, specials, and events</p>
             <div className="flex gap-6 justify-center mb-8">
               <a
-                href="https://instagram.com/saborrestaurantbakery"
+                href="https://www.instagram.com/saborrestaurantandbakery/"
                 target="_blank"
                 className="group bg-gradient-to-br from-amber-500 to-orange-600 w-20 h-20 rounded-full flex items-center justify-center hover:scale-110 transition-all shadow-lg hover:shadow-amber-500/50"
               >
                 <Instagram size={36} className="group-hover:rotate-12 transition-transform" />
               </a>
               <a
-                href="https://facebook.com/saborrestaurantbakery"
+                href="https://www.facebook.com/profile.php?id=61589917963423"
                 target="_blank"
                 className="group bg-gradient-to-br from-amber-500 to-orange-600 w-20 h-20 rounded-full flex items-center justify-center hover:scale-110 transition-all shadow-lg hover:shadow-amber-500/50"
               >
@@ -332,10 +332,10 @@ export default function Contact() {
             <div>
               <h4 className="font-bold text-lg mb-4 text-amber-400">Follow Us</h4>
               <div className="flex gap-4">
-                <a href="https://instagram.com/saborrestaurantbakery" target="_blank" className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all">
+                <a href="https://www.instagram.com/saborrestaurantandbakery/" target="_blank" className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all">
                   <Instagram size={20} />
                 </a>
-                <a href="https://facebook.com/saborrestaurantbakery" target="_blank" className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all">
+                <a href="https://www.facebook.com/profile.php?id=61589917963423" target="_blank" className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all">
                   <Facebook size={20} />
                 </a>
                 <a href="https://tiktok.com/@saborrestaurantbakery" target="_blank" className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center hover:scale-110 transition-all">
